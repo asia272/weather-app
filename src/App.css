@@ -1,0 +1,78 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.app-container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "search search"
+    "current hourly"
+    "stats hourly"
+    "daily hourly";
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto 1fr auto auto;
+  gap: .55rem;
+  padding: 2rem;
+  background-color: #0b0d22; 
+  min-height: 100vh;
+}
+
+/* Assign sections to grid areas */
+.header {
+  grid-area: header;
+  background-color: aquamarine;
+}
+
+.Search-bar {
+  grid-area: search;
+  background-color: aquamarine;
+}
+
+.curent-weather {
+  grid-area: current;
+  background-color: aquamarine;
+}
+
+.weather-stats {
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 1rem;
+  background-color: aquamarine;
+}
+
+.daily-forcast {
+  grid-area: daily;
+  background-color: aquamarine;
+}
+
+.hourly-forcast {
+  grid-area: hourly;
+  background-color: aquamarine;
+}
+
+
+@media (max-width: 768px) {
+  .app-container {
+    grid-template-areas:
+      "header"
+      "search"
+      "current"
+      "stats"
+      "daily"
+      "hourly";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .weather-stats {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+button{
+border: none;
+}
