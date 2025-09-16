@@ -1,0 +1,32 @@
+.current-weather {
+  text-align: center;
+  padding: 2rem;
+  background: var(--mid-blue);
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 420px;
+  color: var(--white);
+}
+
+.current-weather h2 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.current-weather .temp {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0.8rem 0;
+}
+
+.current-weather .condition {
+  font-size: 1.1rem;
+  color: var(--gray);
+}
+
+.current-weather img {
+  width: 80px;
+  height: 80px;
+  margin-top: 0.5rem;
+}

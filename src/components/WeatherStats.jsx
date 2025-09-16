@@ -1,12 +1,29 @@
+import React from "react";
 import "../styles/WeatherStats.css";
 
-const WeatherStats = () => {
+function WeatherStats({ data }) {
+  if (!data) return null;
+
   return (
-    <section>
-      <h2>Weather Stats</h2>
-      {/* Example: humidity, wind speed, etc. */}
+    <section className="weather-stats">
+      <div className="stat-card">
+        <h4>Feels Like</h4>
+        <p>{data.apparent_temperature ?? data.temperature}°</p>
+      </div>
+      <div className="stat-card">
+        <h4>Humidity</h4>
+        <p>{data.relativehumidity_2m ?? "-"}%</p>
+      </div>
+      <div className="stat-card">
+        <h4>Wind Speed</h4>
+        <p>{data.windspeed} {data.units?.windspeed || "km/h"}</p>
+      </div>
+      <div className="stat-card">
+        <h4>Precipitation</h4>
+        <p>{data.precipitation ?? 0} {data.units?.precipitation || "mm"}</p>
+      </div>
     </section>
   );
-};
+}
 
 export default WeatherStats;

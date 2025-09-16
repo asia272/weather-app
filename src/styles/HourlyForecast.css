@@ -1,0 +1,19 @@
+.hourly-forecast {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.hour-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--light-blue);
+  padding: 0.8rem;
+  border-radius: 8px;
+}
+
+.hour-card span {
+  font-size: 1rem;
+  color: var(--white);
+}

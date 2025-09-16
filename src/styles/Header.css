@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--dark-blue);
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--light-blue);
+  width: 100%;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.header-logo img {
+  width: 28px;
+  height: 28px;
+}
+
+.units-dropdown select {
+  background: var(--mid-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}

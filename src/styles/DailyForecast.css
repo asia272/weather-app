@@ -1,0 +1,33 @@
+.daily-forecast {
+  margin: 2rem auto;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.daily-card {
+  background: var(--light-blue);
+  color: var(--white);
+  padding: 1rem;
+  border-radius: 10px;
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.daily-card:hover {
+  transform: translateY(-5px);
+  background: var(--primary-blue);
+}
+
+.daily-card.active {
+  background: var(--primary-orange);
+}
+
+.daily-card img {
+  width: 40px;
+  height: 40px;
+  margin: 0.5rem auto;
+}

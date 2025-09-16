@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-
-// Import components
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import CurrentWeather from "./components/CurrentWeather";
@@ -8,47 +6,105 @@ import WeatherStats from "./components/WeatherStats";
 import DailyForecast from "./components/DailyForecast";
 import HourlyForecast from "./components/HourlyForecast";
 import ErrorMessage from "./components/ErrorMessage";
+import { fetchCoordinates, fetchWeather } from "./api/openMeteo";
 
-import "./App.css"
+import "./App.css";
 
-function App() {
-  const [error, setError] = useState(true);
+export default function App() {
+  const [weather, setWeather] = useState(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [units, setUnits] = useState("metric");
+  const [selectedDay, setSelectedDay] = useState(0);
 
-  // Retry handler (you can trigger a re-fetch here)
-  const handleRetry = () => {
-    setError(false);
-    // re-fetch weather API here
+  const DEFAULT_CITY = "Berlin"; // ✅ define once
+
+  const handleSearch = async (city) => {
+    if (!city) return;
+
+    setLoading(true);
+
+    try {
+      const location = await fetchCoordinates(city);
+      if (!location) throw new Error("Location not found");
+
+      const data = await fetchWeather(location.lat, location.lon, units);
+
+      setWeather({
+        city: location.name,
+        country: location.country,
+        current: data.current_weather,
+        daily: data.daily,
+        hourly: data.hourly,
+      });
+      setError(""); // ✅ clear error only on success
+    } catch (err) {
+      setError(err.message || "Something went wrong");
+      setWeather(null); // clear only on failure
+    } finally {
+      setLoading(false);
+    }
   };
+
+  const handleRetry = () => {
+    // ✅ retry should show default city again
+    setError("");
+    handleSearch(DEFAULT_CITY);
+  };
+
+  // ✅ run default search on first load + when units change
+  useEffect(() => {
+    handleSearch(DEFAULT_CITY);
+  }, [units]);
 
   return (
     <div className="app-container">
       <section className="header">
-        <Header />
+        <Header units={units} setUnits={setUnits} />
       </section>
 
       {error ? (
-        <ErrorMessage message="We couldn’t connect to the server (API error). Please try again in a few moments." onRetry={handleRetry} />
+        <ErrorMessage message={error} onRetry={handleRetry} />
       ) : (
         <>
-          <section className="Search-bar">
-            <SearchBar />
+          <section className="search-bar-section">
+            <SearchBar onSearch={handleSearch} />
           </section>
-          <section className="curent-weather">
-            <CurrentWeather setError={setError} />
-          </section>
-          <section className="weather-stats">
-            <WeatherStats />
-          </section>
-          <section className="daily-forcast">
-            <DailyForecast />
-          </section>
-          <section className="hourly-forcast">
-            <HourlyForecast />
-          </section>
+
+          {weather && (
+            <>
+              <section className="current-weather">
+                <CurrentWeather data={weather} />
+              </section>
+
+              <section className="weather-stats">
+                <WeatherStats data={weather.current} />
+              </section>
+
+              <section className="daily-forecast">
+                <DailyForecast
+                  daily={weather.daily}
+                  selectedDay={selectedDay}
+                  setSelectedDay={setSelectedDay}
+                />
+              </section>
+
+              <section className="hourly-forecast">
+                <HourlyForecast
+                  hourly={weather.hourly}
+                  selectedDay={selectedDay}
+                />
+              </section>
+            </>
+          )}
         </>
+      )}
+
+      {loading && (
+        <div className="loading-overlay">
+          <p>Loading...</p>
+        </div>
       )}
     </div>
   );
 }
-
-export default App;

@@ -1,12 +1,26 @@
+import React from "react";
 import "../styles/DailyForecast.css";
 
-const DailyForecast = () => {
+function DailyForecast({ daily, selectedDay, setSelectedDay }) {
+  if (!daily) return null;
+
   return (
-    <section>
-      <h2>Daily Forecast</h2>
-      {/* Forecast cards here */}
+    <section className="daily-forecast">
+      <h2>7-Day Forecast</h2>
+      <div className="forecast-list">
+        {daily.time.map((date, idx) => (
+          <button
+            key={date}
+            className={`forecast-card ${selectedDay === idx ? "active" : ""}`}
+            onClick={() => setSelectedDay(idx)}
+          >
+            <p>{new Date(date).toLocaleDateString("en-US", { weekday: "short" })}</p>
+            <p>{daily.temperature_2m_max[idx]}° / {daily.temperature_2m_min[idx]}°</p>
+          </button>
+        ))}
+      </div>
     </section>
   );
-};
+}
 
 export default DailyForecast;

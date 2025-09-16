@@ -1,11 +1,15 @@
-import "../styles/CurrentWeather.css";
+const CurrentWeather = ({ data }) => {
+  if (!data || !data.current) return null;
 
-const CurrentWeather = () => {
+  const { city, country, current } = data;
+  const { temperature, weathercode } = current;
+
   return (
-    <section>
-      <h2>Current Weather</h2>
-      {/* Weather data goes here */}
-    </section>
+    <div className="current-weather">
+      <h2>{city}, {country}</h2>
+      <p>{temperature}°</p>
+      <img src={`/icons/${weathercode}.png`} alt="Weather Icon" />
+    </div>
   );
 };
 
