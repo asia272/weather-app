@@ -31,3 +31,28 @@
   height: 40px;
   margin: 0.5rem auto;
 }
+.daily-forecast {
+  grid-area: daily;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.forecast-card {
+  flex: 1;
+  background: var(--light-blue);
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.forecast-card:hover {
+  background: var(--primary-blue);
+  transform: translateY(-4px);
+}
+
+.forecast-card.active {
+  background: var(--primary-orange);
+}

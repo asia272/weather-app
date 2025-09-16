@@ -1,20 +1,22 @@
+
+
+.search-bar {
+  grid-area: search;
+  text-align: center;
+  margin: 1.5rem auto;
+}
+
+.search-bar h1 {
+  font-size: 1.9rem;
+  margin-bottom: 3rem;
+}
+
 .search-bar-form {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-
-
-}
-
-.search-bar {
-  background-color: red;
-  width: 100%;
+  gap: 0.6rem;
   max-width: 600px;
-  margin: 1.5rem 0;
-  margin-left: auto;
-  margin-right: auto;
-
+  margin: 0 auto;
 }
 
 .search-bar-form input {
@@ -22,36 +24,26 @@
   padding: 0.9rem 1.2rem;
   border: none;
   border-radius: 12px;
-  font-size: 1rem;
-  font-family: var(--font-body);
-  background-color: var(--light-blue);
+  background: var(--light-blue);
   color: var(--white);
-  outline: none;
-  transition: all 0.2s ease-in-out;
+  font-size: 1rem;
 }
 
 .search-bar-form input::placeholder {
   color: var(--light-gray);
-  font-size: 0.95rem;
-}
-
-.search-bar-form input:focus {
-  box-shadow: 0 0 0 2px var(--primary-blue);
 }
 
 .search-bar-form button {
-  padding: 0.9rem 1.6rem;
+  background: var(--primary-blue);
+  color: var(--white);
   border: none;
   border-radius: 12px;
-  background-color: var(--primary-blue);
-  color: var(--white);
-  font-size: 1rem;
+  padding: 0.9rem 1.4rem;
   font-weight: 600;
-  font-family: var(--font-body);
   cursor: pointer;
-  transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease;
 }
 
 .search-bar-form button:hover {
-  background-color: var(--dark-blue-accent);
+  background: var(--dark-blue-accent);
 }

@@ -1,10 +1,14 @@
 import React from "react";
 import "../styles/Header.css";
+import logo from "../assets/images/logo.svg"
 
 function Header({ units, setUnits }) {
   return (
     <header className="header">
-      <h1 className="app-title">Weather App</h1>
+      <div className="logo">
+        <img src={logo} alt="weather-app-logo" />
+      </div>
+
 
       <div className="units-toggle">
         <label htmlFor="units">Units:</label>

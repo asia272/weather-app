@@ -59,7 +59,7 @@ export default function App() {
 
   return (
     <div className="app-container">
-      <section className="header">
+      <section className="header-section">
         <Header units={units} setUnits={setUnits} />
       </section>
 
@@ -73,15 +73,15 @@ export default function App() {
 
           {weather && (
             <>
-              <section className="current-weather">
+              <section className="current-weather-section">
                 <CurrentWeather data={weather} />
               </section>
 
-              <section className="weather-stats">
+              <section className="weather-stats-section">
                 <WeatherStats data={weather.current} />
               </section>
 
-              <section className="daily-forecast">
+              <section className="daily-forecast-section">
                 <DailyForecast
                   daily={weather.daily}
                   selectedDay={selectedDay}
@@ -89,7 +89,7 @@ export default function App() {
                 />
               </section>
 
-              <section className="hourly-forecast">
+              <section className="hourly-forecast-section">
                 <HourlyForecast
                   hourly={weather.hourly}
                   selectedDay={selectedDay}

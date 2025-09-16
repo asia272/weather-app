@@ -1,9 +1,21 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  background-color: var(--dark-blue);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+}
 .app-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
   display: grid;
   grid-template-areas:
     "header header"
@@ -13,48 +25,98 @@
     "daily hourly";
   grid-template-columns: 2fr 1fr;
   grid-template-rows: auto auto 1fr auto auto;
-  gap: .55rem;
+    grid-template-rows: auto auto 300px auto auto;
+  gap: 1.2rem;
   padding: 2rem;
-  background-color: #0b0d22; 
+  background-color: var(--dark-blue);
   min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--white);
+
 }
 
 /* Assign sections to grid areas */
-.header {
+.header-section {
   grid-area: header;
-  background-color: aquamarine;
+
+}
+
+.current-weather-section,
+.daily-forecast-section,
+.hourly-forecast-section,
+.weather-stats-section {
+  background: var(--mid-blue);
+  padding: 1rem;
+  border-radius: 12px;
 }
 
 .search-bar-section {
   grid-area: search;
-  background-color: aquamarine;
+
 }
 
-.curent-weather {
+
+
+.current-weather-section {
   grid-area: current;
-  background-color: aquamarine;
+  display: flex;
+  align-items: center;
+  min-height: 280px;        
+  background: url("../src/assets/images/bg-today-large.svg") no-repeat center;
+  background-size: cover;  
+  border-radius: 12px;
+  padding: 2rem;
+
+
+
 }
 
-.weather-stats {
+
+.weather-stats-section {
   grid-area: stats;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   background-color: aquamarine;
 }
 
-.daily-forecast {
+.daily-forecast-section {
   grid-area: daily;
   background-color: aquamarine;
 }
 
-.hourly-forecast {
+.hourly-forecast-section {
   grid-area: hourly;
-  background-color: aquamarine;
+  background-color: var(--mid-blue);
+}
+
+button {
+  border: none;
+}
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: bold;
+  z-index: 1000;
 }
 
 
+
+/* Small screens: use a different background */
 @media (max-width: 768px) {
+  .current-weather-section {
+    background: url("../src/assets/images/bg-today-small.svg") no-repeat center/cover;
+  }
+}
+
+@media (max-width: 950px) {
   .app-container {
     grid-template-areas:
       "header"
@@ -70,22 +132,13 @@
   }
 
   .weather-stats {
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-button{
-border: none;
-}
 
-.loading-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--white);
-  font-size: 1.5rem;
-  font-weight: bold;
-  z-index: 1000;
+
+@media (min-width: 1025px) {
+  .app-container {
+    max-width: 1200px; /* center content */
+  }
 }

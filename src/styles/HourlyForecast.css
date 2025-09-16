@@ -8,9 +8,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--light-blue);
+  background-color: var(--light-blue) !important;
   padding: 0.8rem;
   border-radius: 8px;
+  margin: 8px 0;
 }
 
 .hour-card span {
