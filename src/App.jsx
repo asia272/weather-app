@@ -6,6 +6,7 @@ import WeatherStats from "./components/WeatherStats";
 import DailyForecast from "./components/DailyForecast";
 import HourlyForecast from "./components/HourlyForecast";
 import ErrorMessage from "./components/ErrorMessage";
+import NotFoundMessage from "./components/NotFoundMessage";
 import { fetchCoordinates, fetchWeather } from "./api/openMeteo";
 
 import "./App.css";
@@ -13,20 +14,29 @@ import "./App.css";
 export default function App() {
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState("");
+  const [notFound, setNotFound] = useState(false);
   const [loading, setLoading] = useState(false);
   const [units, setUnits] = useState("metric");
   const [selectedDay, setSelectedDay] = useState(0);
+  const [lastCity, setLastCity] = useState("Berlin"); // remember last search
 
-  const DEFAULT_CITY = "Berlin"; // ✅ define once
+  const DEFAULT_CITY = "Berlin";
 
   const handleSearch = async (city) => {
     if (!city) return;
 
+    setLastCity(city); // store the latest searched city
     setLoading(true);
+    setError("");
+    setNotFound(false);
 
     try {
       const location = await fetchCoordinates(city);
-      if (!location) throw new Error("Location not found");
+      if (!location) {
+        setNotFound(true);
+        setWeather(null);
+        return;
+      }
 
       const data = await fetchWeather(location.lat, location.lon, units);
 
@@ -37,24 +47,27 @@ export default function App() {
         daily: data.daily,
         hourly: data.hourly,
       });
-      setError(""); // ✅ clear error only on success
     } catch (err) {
-      setError(err.message || "Something went wrong");
-      setWeather(null); // clear only on failure
+      if (err.message.includes("Location not found")) {
+        setNotFound(true); // handle city not found separately
+      } else {
+        setError("API error: Could not fetch weather data"); // only true API errors
+      }
+      setWeather(null);
     } finally {
       setLoading(false);
     }
   };
 
   const handleRetry = () => {
-    // ✅ retry should show default city again
     setError("");
-    handleSearch(DEFAULT_CITY);
+    setNotFound(false);
+    handleSearch(lastCity || DEFAULT_CITY); // retry with last city searched
   };
 
-  // ✅ run default search on first load + when units change
+  // Run default search on first load + whenever units change
   useEffect(() => {
-    handleSearch(DEFAULT_CITY);
+    handleSearch(lastCity || DEFAULT_CITY);
   }, [units]);
 
   return (
@@ -64,8 +77,18 @@ export default function App() {
       </section>
 
       {error ? (
+        // API error: only show error message
         <ErrorMessage message={error} onRetry={handleRetry} />
+      ) : notFound ? (
+        // City not found: show search bar + not found message
+        <>
+          <section className="search-bar-section">
+            <SearchBar onSearch={handleSearch} />
+          </section>
+          <NotFoundMessage onRetry={handleRetry} />
+        </>
       ) : (
+        // Normal weather data
         <>
           <section className="search-bar-section">
             <SearchBar onSearch={handleSearch} />

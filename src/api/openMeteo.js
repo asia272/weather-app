@@ -10,11 +10,15 @@ export async function fetchCoordinates(city) {
     )}&count=1&language=en&format=json`
   );
 
-  if (!geoRes.ok) throw new Error("Failed to fetch location");
+  if (!geoRes.ok) {
+    throw new Error("Failed to fetch location"); // API/network issue
+  }
 
   const geoData = await geoRes.json();
+
+  // If no results, return null, don't throw
   if (!geoData.results || geoData.results.length === 0) {
-    throw new Error("Location not found");
+    return null;
   }
 
   return {
@@ -36,7 +40,9 @@ export async function fetchWeather(lat, lon, units = "metric") {
     `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=temperature_2m,relative_humidity_2m,precipitation,windspeed_10m,weathercode&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=auto${params}`
   );
 
-  if (!res.ok) throw new Error("Failed to fetch weather data");
+  if (!res.ok) {
+    throw new Error("Failed to fetch weather data");
+  }
 
   return await res.json();
 }

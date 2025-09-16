@@ -13,7 +13,10 @@
 
   font-family: var(--font-body);
 }
-
+.not-found-msg{
+  align-items: start ;
+  text-align: center;
+}
 .error-icon {
   font-size: 3rem;
   margin-bottom: 1.5rem;
