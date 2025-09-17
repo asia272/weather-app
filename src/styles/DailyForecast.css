@@ -2,7 +2,7 @@
   margin: 1rem auto;
   display: flex;
   flex-direction: column;
-  /* height: 100%; */
+  flex: 1;    
   gap: 1rem;
   background: orange;
 }
@@ -12,12 +12,12 @@
 } */
 
 .forecast-list {
-
+height: 100%;
   background-color: red;
   display: flex;
   gap: 1rem;
-  justify-content: center;
-  align-items: start;
+  justify-content: space-between;
+
   flex-wrap: wrap;
 }
 
