@@ -1,5 +1,4 @@
 
-
 .search-bar {
   grid-area: search;
   text-align: center;
@@ -9,6 +8,7 @@
 .search-bar h1 {
   font-size: 1.9rem;
   margin-bottom: 3rem;
+    font-family: var(--font-heading);
 }
 
 .search-bar-form {

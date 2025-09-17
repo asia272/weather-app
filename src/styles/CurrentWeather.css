@@ -13,7 +13,6 @@
 }
 
 .current-weather h2 {
-  font-family: var(--font-heading);
   font-size: 1.4rem;
   margin-bottom: 0.6rem;
 }

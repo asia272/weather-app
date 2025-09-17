@@ -9,8 +9,10 @@ body {
   background-color: var(--dark-blue);
 }
 
-h1, h2, h3 {
-  font-family: var(--font-heading);
+
+h3{
+  font-weight: 500;
+  font-size: 19px;
 }
 .app-container {
   margin-left: auto;
@@ -25,7 +27,9 @@ h1, h2, h3 {
     "daily hourly";
   grid-template-columns: 2fr 1fr;
 
-        grid-template-rows: auto auto auto auto 1fr;
+grid-template-rows: auto auto auto auto minmax(0, 1fr);
+
+
   gap: 1.2rem;
   padding: 2rem;
   background-color: var(--dark-blue);
@@ -55,7 +59,6 @@ h1, h2, h3 {
 }
 
 
-
 .current-weather-section {
   grid-area: current;
   display: flex;
@@ -66,10 +69,7 @@ h1, h2, h3 {
   border-radius: 12px;
   padding: 2rem;
 
-
-
 }
-
 
 .weather-stats-section {
   grid-area: stats;
@@ -77,7 +77,9 @@ h1, h2, h3 {
 
 .daily-forecast-section {
   grid-area: daily;
-  background-color: aquamarine;
+  background-color: var(--very-light-gray);
+  align-self: start; /* prevent stretching */
+
 }
 
 .hourly-forecast-section {
@@ -85,8 +87,9 @@ h1, h2, h3 {
   padding: 1rem;
     border: 1px solid var(--very-light-gray);
     background: var(--mid-blue);
-     display: flex;
-  flex-direction: column;
+    max-height: 700px;
+
+
 }
 
 button {
@@ -141,3 +144,6 @@ button {
     max-width: 1200px; 
   }
 }
+
+
+

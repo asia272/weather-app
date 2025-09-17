@@ -32,7 +32,8 @@ function DailyForecast({ daily }) {
 
   return (
     <section className="daily-forecast">
-      <h2>7-Day Forecast</h2>
+      <h3>Daily Forecast</h3>
+  
       <div className="forecast-list">
         {daily.time.map((date, idx) => (
           <div key={date} className="forecast-card">

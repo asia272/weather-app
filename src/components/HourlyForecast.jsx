@@ -11,7 +11,7 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay }) {
   return (
     <section className="hourly-forecast">
       <div className="hourly-forecast-top">
-        <p>Hourly Forecast</p>
+        <h3>Hourly Forecast</h3>
         {/* Dropdown Day Selector */}
         <div className="day-dropdown">
           <select

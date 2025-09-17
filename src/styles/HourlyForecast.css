@@ -2,14 +2,18 @@
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  overflow: auto;
-  
+    height: 100%;
+
 }
 
 .hourly-forecast-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.hourly-list {
+  overflow-y: auto;
+  min-height: 0;
 }
 
 .hour-card {
@@ -21,6 +25,7 @@
   border-radius: 8px;
   margin: 8px 0;
 }
+
 
 .hour-card span {
   font-size: 1rem;

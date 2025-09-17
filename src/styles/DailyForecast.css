@@ -1,8 +1,23 @@
 .daily-forecast {
-  margin: 2rem auto;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  /* height: 100%; */
+  gap: 1rem;
+  background: orange;
+}
+
+/* .daily-forecast h3 {
+  margin-bottom: 1rem;
+} */
+
+.forecast-list {
+
+  background-color: red;
   display: flex;
   gap: 1rem;
   justify-content: center;
+  align-items: start;
   flex-wrap: wrap;
 }
 
@@ -12,6 +27,7 @@
   padding: 1rem;
   border-radius: 10px;
   width: 100px;
+  height: 100%;
   text-align: center;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease;
@@ -31,12 +47,7 @@
   height: 40px;
   margin: 0.5rem auto;
 }
-.daily-forecast {
-  grid-area: daily;
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-}
+
 
 .forecast-card {
   flex: 1;
