@@ -29,7 +29,7 @@
   --neutral-900: hsl(243, 96%, 9%);
   --neutral-800: hsl(243, 27%, 20%);
   --neutral-700: hsl(243, 23%, 24%);
-  --neutral-600: hsl(243, 23%, 30%);
+  --neutral-600: rgb(61, 59, 94);
   --neutral-300: hsl(240, 6%, 70%);
   --neutral-200: hsl(250, 6%, 84%);
   --neutral-0:   hsl(0, 0%, 100%);
@@ -38,6 +38,7 @@
   --dark-blue: var(--neutral-900);
   --mid-blue: var(--neutral-800);
   --light-blue: var(--neutral-700);
+  --very-light-gray:var(--neutral-600);
   --gray: var(--neutral-300);
   --light-gray: var(--neutral-200);
   --white: var(--neutral-0);

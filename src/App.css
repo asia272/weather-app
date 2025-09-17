@@ -24,8 +24,8 @@ h1, h2, h3 {
     "stats hourly"
     "daily hourly";
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto auto 1fr auto auto;
-    grid-template-rows: auto auto 300px auto auto;
+
+        grid-template-rows: auto auto auto auto 1fr;
   gap: 1.2rem;
   padding: 2rem;
   background-color: var(--dark-blue);
@@ -45,9 +45,8 @@ h1, h2, h3 {
 .daily-forecast-section,
 .hourly-forecast-section,
 .weather-stats-section {
-  background: var(--mid-blue);
-  padding: 1rem;
   border-radius: 12px;
+
 }
 
 .search-bar-section {
@@ -74,10 +73,6 @@ h1, h2, h3 {
 
 .weather-stats-section {
   grid-area: stats;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  background-color: aquamarine;
 }
 
 .daily-forecast-section {
@@ -87,7 +82,11 @@ h1, h2, h3 {
 
 .hourly-forecast-section {
   grid-area: hourly;
-  background-color: var(--mid-blue);
+  padding: 1rem;
+    border: 1px solid var(--very-light-gray);
+    background: var(--mid-blue);
+     display: flex;
+  flex-direction: column;
 }
 
 button {
@@ -139,6 +138,6 @@ button {
 
 @media (min-width: 1025px) {
   .app-container {
-    max-width: 1200px; /* center content */
+    max-width: 1200px; 
   }
 }

@@ -47,3 +47,9 @@
 .search-bar-form button:hover {
   background: var(--dark-blue-accent);
 }
+
+@media (max-width:700px) {
+  .search-bar-form {
+    flex-direction: column;
+  }
+}

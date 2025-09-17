@@ -1,8 +1,8 @@
 import React from "react";
 import "../styles/HourlyForecast.css";
 
-function HourlyForecast({ hourly, selectedDay }) {
-  if (!hourly) return null;
+function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay }) {
+  if (!hourly || !daily) return null;
 
   // Show only hours of the chosen day
   const start = selectedDay * 24;
@@ -10,7 +10,27 @@ function HourlyForecast({ hourly, selectedDay }) {
 
   return (
     <section className="hourly-forecast">
-      <h2>Hourly Forecast</h2>
+      <div className="hourly-forecast-top">
+        <p>Hourly Forecast</p>
+        {/* Dropdown Day Selector */}
+        <div className="day-dropdown">
+          <select
+            value={selectedDay}
+            onChange={(e) => setSelectedDay(Number(e.target.value))}
+          >
+            {daily.time.map((date, idx) => (
+              <option key={date} value={idx}>
+                {new Date(date).toLocaleDateString("en-US", { weekday: "long" })}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+
+
+
+      {/* Hourly data for selected day */}
       <div className="hourly-list">
         {hourly.time.slice(start, end).map((time, idx) => (
           <div key={time} className="hour-card">

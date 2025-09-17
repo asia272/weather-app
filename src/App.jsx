@@ -105,19 +105,19 @@ export default function App() {
               </section>
 
               <section className="daily-forecast-section">
-                <DailyForecast
-                  daily={weather.daily}
-                  selectedDay={selectedDay}
-                  setSelectedDay={setSelectedDay}
-                />
+                <DailyForecast daily={weather.daily} />
+
               </section>
 
               <section className="hourly-forecast-section">
                 <HourlyForecast
                   hourly={weather.hourly}
+                  daily={weather.daily}   
                   selectedDay={selectedDay}
+                  setSelectedDay={setSelectedDay} 
                 />
               </section>
+
             </>
           )}
         </>
