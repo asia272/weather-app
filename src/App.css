@@ -7,10 +7,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--font-size-body);
   background-color: var(--dark-blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+
 }
 
 
@@ -81,21 +78,17 @@ grid-template-rows: auto auto auto auto minmax(0, 1fr);
 
 .daily-forecast-section {
   grid-area: daily;
-  background-color: var(--very-light-gray);
-
+  /* background-color: var(--very-light-gray); */
   min-height: 278px;
   max-height: 278px; 
-  overflow-y: auto;
 }
 
 .hourly-forecast-section {
   grid-area: hourly;
-  padding: 1rem;
+
     border: 1px solid var(--very-light-gray);
     background: var(--mid-blue);
-    max-height: 700px;
-
-
+    max-height: 704px;
 }
 
 button {
