@@ -8,7 +8,9 @@ import DailyForecast from "./components/DailyForecast";
 import HourlyForecast from "./components/HourlyForecast";
 import ErrorMessage from "./components/ErrorMessage";
 import NotFoundMessage from "./components/NotFoundMessage";
+import LoadingUI from "./components/Loader";
 import { fetchCoordinates, fetchWeather } from "./api/openMeteo";
+
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -23,25 +25,27 @@ export default function App() {
   const [notFound, setNotFound] = useState(false);
   const [loading, setLoading] = useState(false);
 
-
+  //Aos Animation setup
   useEffect(() => {
-  AOS.init({
-    duration: 800,     
-    easing: "ease-in-out",
-    once: true,   
-    mirror: false,  
-  });
-}, []);
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: true,
+      mirror: false,
+    });
+  }, []);
 
   const [units, setUnits] = useState({
-    temperature: "C",  
-    windspeed: "km/h",  
-    precipitation: "mm" 
+    temperature: "C",
+    windspeed: "km/h",
+    precipitation: "mm"
   });
 
   const [selectedDay, setSelectedDay] = useState(0);
   const [lastCity, setLastCity] = useState("Berlin");
   const DEFAULT_CITY = "Berlin";
+
+
 
   const handleSearch = async (city) => {
     if (!city) return;
@@ -91,9 +95,10 @@ export default function App() {
   }, []);
 
   return (
+
     <div className="app-container">
       <section className="header-section">
-        <Header units={units} setUnits={setUnits} /> 
+        <Header units={units} setUnits={setUnits} />
         {/*  pass down units and updater */}
       </section>
 
@@ -141,10 +146,13 @@ export default function App() {
       )}
 
       {loading && (
-        <div className="loading-overlay">
-          <p>Loading...</p>
-        </div>
+        <section className="loading-section">
+          <LoadingUI />
+        </section>
       )}
+
     </div>
+
+
   );
 }
