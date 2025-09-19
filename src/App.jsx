@@ -9,6 +9,11 @@ import HourlyForecast from "./components/HourlyForecast";
 import ErrorMessage from "./components/ErrorMessage";
 import NotFoundMessage from "./components/NotFoundMessage";
 import { fetchCoordinates, fetchWeather } from "./api/openMeteo";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+
 import "./App.css";
 import "./responsive/responsive.css"
 
@@ -18,6 +23,15 @@ export default function App() {
   const [notFound, setNotFound] = useState(false);
   const [loading, setLoading] = useState(false);
 
+
+  useEffect(() => {
+  AOS.init({
+    duration: 800,     
+    easing: "ease-in-out",
+    once: true,   
+    mirror: false,  
+  });
+}, []);
 
   const [units, setUnits] = useState({
     temperature: "C",  
@@ -80,7 +94,7 @@ export default function App() {
     <div className="app-container">
       <section className="header-section">
         <Header units={units} setUnits={setUnits} /> 
-        {/* ✅ pass down units and updater */}
+        {/*  pass down units and updater */}
       </section>
 
       {error ? (
@@ -94,25 +108,25 @@ export default function App() {
         </>
       ) : (
         <>
-          <section className="search-bar-section">
+          <section className="search-bar-section" >
             <SearchBar onSearch={handleSearch} />
           </section>
 
           {weather && (
             <>
-              <section className="current-weather-section">
+              <section className="current-weather-section" data-aos="zoom-in">
                 <CurrentWeather data={weather} units={units} />
               </section>
 
-              <section className="weather-stats-section">
+              <section className="weather-stats-section" >
                 <WeatherStats data={weather.current} units={units} />
               </section>
 
-              <section className="daily-forecast-section">
+              <section className="daily-forecast-section" data-aos="fade-up" data-aos-delay="200">
                 <DailyForecast daily={weather.daily} units={units} />
               </section>
 
-              <section className="hourly-forecast-section">
+              <section className="hourly-forecast-section" data-aos="fade-left" data-aos-delay="300">
                 <HourlyForecast
                   hourly={weather.hourly}
                   daily={weather.daily}

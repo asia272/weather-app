@@ -77,7 +77,7 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay, units = {}
       <div className="hourly-forecast-top">
         <h3>Hourly Forecast</h3>
 
-        {/* ✅ Custom dropdown */}
+        {/*  Custom dropdown */}
         <div className="day-dropdown">
           <button className="day-btn" onClick={() => setOpen(!open)}>
             {new Date(daily.time[selectedDay]).toLocaleDateString("en-US", { weekday: "long" })}

@@ -12,15 +12,16 @@ export default function SearchBar({ onSearch }) {
 
   return (
     <div className="search-bar">
-      <h1>How's the sky looking today?</h1>
+      <h1  data-aos="fade-down">How's the sky looking today?</h1>
       <form className="search-bar-form" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Search for a place..."
           value={city}
           onChange={(e) => setCity(e.target.value)}
+           data-aos="fade-right"
         />
-        <button type="submit">Search</button>
+        <button type="submit" data-aos="fade-left">Search</button>
       </form>
     </div>
 

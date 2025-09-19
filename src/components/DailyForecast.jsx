@@ -2,7 +2,7 @@
 import React from "react";
 import "../styles/DailyForecast.css";
 import { getWeatherIcon } from "../utils/weatherIcons";
-import { convertTemperature } from "../utils/convertUnits"; 
+import { convertTemperature } from "../utils/convertUnits";
 
 function DailyForecast({ daily, units = {} }) {
   if (!daily) return null;
@@ -20,7 +20,8 @@ function DailyForecast({ daily, units = {} }) {
           const minTemp = convertTemperature(daily.temperature_2m_min[idx], units.temperature || "C");
 
           return (
-            <div key={date} className="forecast-card">
+            <div key={date} className="forecast-card" data-aos="fade-up"
+              data-aos-delay={idx * 100}  >
               <p>{new Date(date).toLocaleDateString("en-US", { weekday: "short" })}</p>
               <img
                 src={icon}
@@ -32,7 +33,7 @@ function DailyForecast({ daily, units = {} }) {
                 <p>{maxTemp}°</p>
                 <p>{minTemp}°</p>
               </div>
-             
+
             </div>
           );
         })}
