@@ -1,8 +1,10 @@
+
 import React from "react";
 import "../styles/DailyForecast.css";
-import { getWeatherIcon } from "../utils/weatherIcons"; // use function instead of map
+import { getWeatherIcon } from "../utils/weatherIcons";
+import { convertTemperature } from "../utils/convertUnits"; // ✅ add
 
-function DailyForecast({ daily }) {
+function DailyForecast({ daily, units = {} }) {
   if (!daily) return null;
 
   return (
@@ -11,25 +13,22 @@ function DailyForecast({ daily }) {
 
       <div className="forecast-list">
         {daily.time.map((date, idx) => {
-          const code = daily.weathercode[idx]; 
-          const icon = getWeatherIcon(code);   
+          const code = daily.weathercode[idx];
+          const icon = getWeatherIcon(code);
+
+          const maxTemp = convertTemperature(daily.temperature_2m_max[idx], units.temperature || "C");
+          const minTemp = convertTemperature(daily.temperature_2m_min[idx], units.temperature || "C");
 
           return (
             <div key={date} className="forecast-card">
-              <p>
-                {new Date(date).toLocaleDateString("en-US", {
-                  weekday: "short",
-                })}
-              </p>
+              <p>{new Date(date).toLocaleDateString("en-US", { weekday: "short" })}</p>
               <img
                 src={icon}
-                alt={`Weather code ${code}`}   
+                alt={`Weather code ${code}`}
                 className="weather-icon"
                 style={{ width: "40px", height: "40px", margin: "0.5rem auto" }}
               />
-              <p>
-                {daily.temperature_2m_max[idx]}° / {daily.temperature_2m_min[idx]}°
-              </p>
+              <p>{maxTemp}° / {minTemp}°</p>
             </div>
           );
         })}

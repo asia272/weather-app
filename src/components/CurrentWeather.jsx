@@ -1,13 +1,17 @@
-import "../styles/CurrentWeather.css";
-import { getWeatherIcon } from "../utils/weatherIcons"; // ✅ correct import
 
-const CurrentWeather = ({ data }) => {
+
+import "../styles/CurrentWeather.css";
+import { getWeatherIcon } from "../utils/weatherIcons";
+import { convertTemperature } from "../utils/convertUnits"; // ✅ add this
+
+const CurrentWeather = ({ data, units = {} }) => {
   if (!data || !data.current) return null;
 
   const { city, country, current } = data;
   const { temperature, weathercode } = current;
 
-  // ✅ use the function
+  // ✅ use convertUnits
+  const displayTemp = convertTemperature(temperature, units.temperature || "C");
   const icon = getWeatherIcon(weathercode);
 
   // current date
@@ -22,19 +26,16 @@ const CurrentWeather = ({ data }) => {
   return (
     <div className="current-weather">
       <div className="current-weather-content">
-        <h2>
-          {city}, {country}
-        </h2>
+        <h2>{city}, {country}</h2>
         <p className="current-date">{formattedDate}</p>
       </div>
 
       <div className="current-weather-icon">
         <img src={icon} alt="Weather Icon" />
-        <p className="current-temp">{temperature}°</p>
+        <p className="current-temp">{displayTemp}°</p>
       </div>
     </div>
   );
 };
 
 export default CurrentWeather;
-
