@@ -1,8 +1,7 @@
 
-
 import "../styles/CurrentWeather.css";
 import { getWeatherIcon } from "../utils/weatherIcons";
-import { convertTemperature } from "../utils/convertUnits"; // ✅ add this
+import { convertTemperature } from "../utils/convertUnits"; 
 
 const CurrentWeather = ({ data, units = {} }) => {
   if (!data || !data.current) return null;
@@ -10,7 +9,7 @@ const CurrentWeather = ({ data, units = {} }) => {
   const { city, country, current } = data;
   const { temperature, weathercode } = current;
 
-  // ✅ use convertUnits
+  // use convertUnits
   const displayTemp = convertTemperature(temperature, units.temperature || "C");
   const icon = getWeatherIcon(weathercode);
 

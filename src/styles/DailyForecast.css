@@ -1,6 +1,6 @@
 .daily-forecast {
   margin: 1rem auto;
-  height: 90%;
+
 }
 
 .daily-forecast h3 {
@@ -8,16 +8,14 @@
 }
 
 .forecast-list {
-  height: 90%;
-  /* background-color: red; */
-  display: flex;
-gap: 1rem;
-justify-content: flex-start;
-
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  display: grid;
+  gap: 1rem;
 
 }
+
 .forecast-card {
-flex: 1;
+  flex: 1;
   background: var(--light-blue);
   padding: 1rem;
   border-radius: 10px;
@@ -25,19 +23,12 @@ flex: 1;
   cursor: pointer;
   transition: all 0.2s ease;
   flex-wrap: wrap;
-}
-.forecast-card:hover {
-  background: var(--primary-blue);
-  transform: translateY(-4px);
+  border: none;
+  border: 1px solid var(--very-light-gray);
 }
 
-.forecast-card.active {
-  background: var(--primary-orange);
-}
-
-
-@media (max-width: 800px) {
-  .forecast-list {
-    flex-wrap: wrap;
-  }
+.daily-temp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

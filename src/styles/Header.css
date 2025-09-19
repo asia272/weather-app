@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   background: var(--dark-blue);
-  padding: 1.2rem 2rem;
+  padding: 1.2rem 0;
 }
 .dropdown-section h5{
   margin-bottom: 0.4rem;
@@ -17,7 +17,7 @@
 background-color:  var(--light-blue);
 cursor: pointer;
 }
-/* ---- Custom Dropdown ---- */
+/* Custom Dropdown  */
 .units-dropdown {
   position: relative;
 }
@@ -103,7 +103,7 @@ cursor: pointer;
 }
 
 .dropdown-icon.open {
-  transform: rotate(180deg); /* rotate arrow when open */
+  transform: rotate(180deg); 
 }
 
 .dropdown-section button.active {

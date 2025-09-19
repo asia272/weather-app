@@ -2,7 +2,7 @@
 import React from "react";
 import "../styles/DailyForecast.css";
 import { getWeatherIcon } from "../utils/weatherIcons";
-import { convertTemperature } from "../utils/convertUnits"; // ✅ add
+import { convertTemperature } from "../utils/convertUnits"; 
 
 function DailyForecast({ daily, units = {} }) {
   if (!daily) return null;
@@ -28,7 +28,11 @@ function DailyForecast({ daily, units = {} }) {
                 className="weather-icon"
                 style={{ width: "40px", height: "40px", margin: "0.5rem auto" }}
               />
-              <p>{maxTemp}° / {minTemp}°</p>
+              <div className="daily-temp">
+                <p>{maxTemp}°</p>
+                <p>{minTemp}°</p>
+              </div>
+             
             </div>
           );
         })}
