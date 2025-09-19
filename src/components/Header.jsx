@@ -14,11 +14,11 @@ function Header({ units, setUnits }) {
 
   return (
     <header className="header">
-      <div className="logo">
+      <div className="logo" data-aos="zoom-in">
         <img src={logo} alt="weather-app-logo" />
       </div>
 
-      <div className="units-dropdown">
+      <div className="units-dropdown" data-aos="zoom-in">
         <button className="units-btn" onClick={() => setOpen(!open)}>
           <img src={unitIcon} alt="units" className="unit-icon" />
           <span>Units</span>
