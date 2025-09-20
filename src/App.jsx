@@ -8,6 +8,8 @@ import HourlyForecast from "./components/HourlyForecast";
 import ErrorMessage from "./components/ErrorMessage";
 import NotFoundMessage from "./components/NotFoundMessage";
 
+
+
 // Skeleton loaders (only for first render)
 import HeroSkeleton from "./components/Loader/HeroSkeleton";
 import VarsSkeleton from "./components/Loader/VarsSkeleton";
@@ -27,9 +29,9 @@ export default function App() {
   const [error, setError] = useState("");
   const [notFound, setNotFound] = useState(false);
 
-  const [loading, setLoading] = useState(true); // ✅ for skeleton only first render
-  const [searching, setSearching] = useState(false); // ✅ for later searches
-  const [initialLoad, setInitialLoad] = useState(true); // ✅ flag for first render
+  const [loading, setLoading] = useState(true); //  for skeleton only first render
+  const [searching, setSearching] = useState(false); // for later searches
+  const [initialLoad, setInitialLoad] = useState(true); // flag for first render
 
   // Aos Animation setup
   useEffect(() => {
@@ -67,7 +69,7 @@ export default function App() {
       const location = await fetchCoordinates(city);
       if (!location) {
         setNotFound(true);
-        setWeather(null); // ✅ clear only on not found
+        setWeather(null); //  clear only on not found
         return;
       }
 
@@ -86,7 +88,7 @@ export default function App() {
       } else {
         setError("API error: Could not fetch weather data");
       }
-      setWeather(null); // ✅ clear only on error
+      setWeather(null);
     } finally {
       setLoading(false);
       setSearching(false);
@@ -114,16 +116,11 @@ export default function App() {
       {/* Search bar (only if no error) */}
       {!error && (
         <section className="search-bar-section">
-          <SearchBar onSearch={handleSearch} />
+          <SearchBar onSearch={handleSearch} searching={searching} />
         </section>
+
       )}
 
-      {/* Searching message (only during searches) */}
-      {searching && (
-        <div className="searching-message">
-          <h3>🔍 Searching in progress…</h3>
-        </div>
-      )}
 
       {/* Error & Not Found */}
       {error ? (
@@ -132,7 +129,7 @@ export default function App() {
         <NotFoundMessage onRetry={handleRetry} />
       ) : (
         <>
-          {/* Show skeletons ONLY on first render */}
+          {/* Show skeletons ONLY on first render For Loading */}
           {loading && !weather ? (
             <>
               <section className="current-weather-section">

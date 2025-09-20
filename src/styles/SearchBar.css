@@ -1,5 +1,5 @@
 .search-bar {
-  grid-area: search;
+  /* grid-area: search; */
   text-align: center;
   margin: 1.5rem auto;
 }
@@ -13,13 +13,14 @@
 .search-bar-form {
   display: flex;
   justify-content: center;
-  gap: 0.6rem;
+  gap: 0.8rem;
   max-width: 600px;
   margin: 0 auto;
+  align-items: start;
 }
 
 .search-bar-form input {
-  flex: 1;
+
   padding: 0.9rem 1.2rem;
 
   border-radius: 12px;
@@ -34,7 +35,12 @@
 .search-bar-form input::placeholder {
   color: var(--light-gray);
 }
-
+.inputs{
+    flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
 .search-bar-form button {
   background: var(--primary-blue);
   border: 3px solid transparent;
