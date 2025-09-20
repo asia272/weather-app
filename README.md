@@ -26,6 +26,9 @@ Users should be able to:
   - Daily Forecast → `DailySkeleton`  
   - Hourly Forecast → `HourlySkeleton`  
   These skeleton components are **created separately** and **rendered conditionally** while data is loading to improve UX and maintain consistent styling.
+  
+---
+
 **Personal Touch & Enhancements**:  
 - Added **plus & bonus animations** for all loading states.  
 - Implemented **scroll-based animations (AOS)** for cards and sections.  
