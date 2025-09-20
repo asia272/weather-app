@@ -8,8 +8,16 @@ import DailyForecast from "./components/DailyForecast";
 import HourlyForecast from "./components/HourlyForecast";
 import ErrorMessage from "./components/ErrorMessage";
 import NotFoundMessage from "./components/NotFoundMessage";
-import LoadingUI from "./components/Loader";
+
+
+// Skeleton loaders
+import HeroSkeleton from "./components/Loader/HeroSkeleton";
+import VarsSkeleton from "./components/Loader/VarsSkeleton";
+import DailySkeleton from "./components/Loader/DailySkeleton";
+import HourlySkeleton from "./components/Loader/HourlySkeleton";
+
 import { fetchCoordinates, fetchWeather } from "./api/openMeteo";
+
 
 
 import AOS from "aos";
@@ -23,7 +31,7 @@ export default function App() {
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState("");
   const [notFound, setNotFound] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   //Aos Animation setup
   useEffect(() => {
@@ -96,62 +104,67 @@ export default function App() {
 
   return (
 
-    <div className="app-container">
-      <section className="header-section">
-        <Header units={units} setUnits={setUnits} />
-        {/*  pass down units and updater */}
+  <div className="app-container">
+  {/* Header always visible */}
+  <section className="header-section">
+    <Header units={units} setUnits={setUnits} />
+  </section>
+
+  {/* Conditionally render SearchBar: only if no error */}
+  {!error && (
+    <section className="search-bar-section">
+      <SearchBar onSearch={handleSearch} />
+    </section>
+  )}
+
+  {/* Error & Not Found */}
+  {error ? (
+    <ErrorMessage message={error} onRetry={handleRetry} />
+  ) : notFound ? (
+    <NotFoundMessage onRetry={handleRetry} />
+  ) : (
+    <>
+      {/* Current Weather */}
+      <section className="current-weather-section" data-aos="zoom-in">
+        {loading ? <HeroSkeleton /> : <CurrentWeather data={weather} units={units} />}
       </section>
 
-      {error ? (
-        <ErrorMessage message={error} onRetry={handleRetry} />
-      ) : notFound ? (
-        <>
-          <section className="search-bar-section">
-            <SearchBar onSearch={handleSearch} />
-          </section>
-          <NotFoundMessage onRetry={handleRetry} />
-        </>
-      ) : (
-        <>
-          <section className="search-bar-section" >
-            <SearchBar onSearch={handleSearch} />
-          </section>
+      {/* Weather Stats */}
+      <section className="weather-stats-section">
+        {loading ? <VarsSkeleton /> : <WeatherStats data={weather.current} units={units} />}
+      </section>
 
-          {weather && (
-            <>
-              <section className="current-weather-section" data-aos="zoom-in">
-                <CurrentWeather data={weather} units={units} />
-              </section>
+      {/* Daily Forecast */}
+      <section
+        className="daily-forecast-section"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        {loading ? <DailySkeleton /> : <DailyForecast daily={weather.daily} units={units} />}
+      </section>
 
-              <section className="weather-stats-section" >
-                <WeatherStats data={weather.current} units={units} />
-              </section>
+      {/* Hourly Forecast */}
+      <section
+        className="hourly-forecast-section"
+        data-aos="fade-left"
+        data-aos-delay="300"
+      >
+        {loading ? (
+          <HourlySkeleton />
+        ) : (
+          <HourlyForecast
+            hourly={weather.hourly}
+            daily={weather.daily}
+            selectedDay={selectedDay}
+            setSelectedDay={setSelectedDay}
+            units={units}
+          />
+        )}
+      </section>
+    </>
+  )}
+</div>
 
-              <section className="daily-forecast-section" data-aos="fade-up" data-aos-delay="200">
-                <DailyForecast daily={weather.daily} units={units} />
-              </section>
-
-              <section className="hourly-forecast-section" data-aos="fade-left" data-aos-delay="300">
-                <HourlyForecast
-                  hourly={weather.hourly}
-                  daily={weather.daily}
-                  selectedDay={selectedDay}
-                  setSelectedDay={setSelectedDay}
-                  units={units}
-                />
-              </section>
-            </>
-          )}
-        </>
-      )}
-
-      {loading && (
-        <section className="loading-section">
-          <LoadingUI />
-        </section>
-      )}
-
-    </div>
 
 
   );
