@@ -30,7 +30,7 @@
   position: relative;
   width: 100%;
 }
-.search-bar-form  img{
+.search-bar-form .input-box img{
   position: absolute;
 height: 1.22rem;
     left: 0.99rem;
@@ -79,13 +79,3 @@ height: 1.22rem;
   background: var(--dark-blue-accent);
 }
 
-/* .search-bar-form input::before{
-   
-      background-image: url("../assets/images/icon-search.svg");
-    content: "";
-    height: 2.1rem;
-    left: 2.4rem;
-    position: absolute;
-    top: 1.8rem;
-    width: 2.1rem;
-} */
