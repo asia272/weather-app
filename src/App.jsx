@@ -125,7 +125,7 @@ export default function App() {
   ) : (
     <>
       {/* Current Weather */}
-      <section className="current-weather-section" data-aos="zoom-in">
+      <section className="current-weather-section">
         {loading ? <HeroSkeleton /> : <CurrentWeather data={weather} units={units} />}
       </section>
 
@@ -137,8 +137,8 @@ export default function App() {
       {/* Daily Forecast */}
       <section
         className="daily-forecast-section"
-        data-aos="fade-up"
-        data-aos-delay="200"
+ 
+     
       >
         {loading ? <DailySkeleton /> : <DailyForecast daily={weather.daily} units={units} />}
       </section>
@@ -146,8 +146,7 @@ export default function App() {
       {/* Hourly Forecast */}
       <section
         className="hourly-forecast-section"
-        data-aos="fade-left"
-        data-aos-delay="300"
+
       >
         {loading ? (
           <HourlySkeleton />

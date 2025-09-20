@@ -23,7 +23,7 @@ const CurrentWeather = ({ data, units = {} }) => {
   });
 
   return (
-    <div className="current-weather">
+    <div className="current-weather"  data-aos="zoom-in">
       <div className="current-weather-content">
         <h2>{city}, {country}</h2>
         <p className="current-date">{formattedDate}</p>

@@ -51,26 +51,26 @@ function WeatherStats({ data, units = {} }) {
 
   return (
     <section className="weather-stats">
-      <div className="stat-card" data-aos="fade-up" data-aos-delay="300">
+      <div className="stat-card" data-aos="zoom-in" >
         <h4>Feels Like</h4>
         <p>
           {convertTemperature(data.apparent_temperature ?? data.temperature, units.temperature || "C")}°
         </p>
       </div>
 
-      <div className="stat-card" data-aos="fade-down" data-aos-delay="500">
+      <div className="stat-card" data-aos="zoom-in" >
         <h4>Humidity</h4>
         <p>{data.relativehumidity_2m ?? "-"}%</p>
       </div>
 
-      <div className="stat-card" data-aos="fade-up" data-aos-delay="700">
+      <div className="stat-card" data-aos="zoom-in" >
         <h4>Wind Speed</h4>
         <p>
           {convertSpeed(data.windspeed, units.windspeed || "km/h")} {units.windspeed || "km/h"}
         </p>
       </div>
 
-      <div className="stat-card" data-aos="fade-down" data-aos-delay="900">
+      <div className="stat-card" data-aos="zoom-in" >
         <h4>Precipitation</h4>
         <p>
           {convertPrecipitation(data.precipitation ?? 0, units.precipitation || "mm")}{" "}
