@@ -4,7 +4,7 @@ import dropDownIcon from "../../assets/images/icon-dropdown.svg";
 
 export default function HourlySkeleton() {
   return (
-    <section className="hourly-forecast mt-10">   {/* same as HourlyForecast */}
+    <section className="hourly-forecast">   {/* same as HourlyForecast */}
   <div className="hourly-forecast-top">
     <h3>Hourly Forecast</h3>
     <div className="day-dropdown">
@@ -18,11 +18,7 @@ export default function HourlySkeleton() {
   <div className="hourly-list">
     {Array.from({ length: 12 }).map((_, i) => (
       <div className="hour-card skeleton-hourly" key={i} >
-        {/* <div className="hourly-icons">
-          <div className="icon-skel"></div>
-          <div className="time-skel"></div>
-        </div>
-        <div className="temp-skel"></div> */}
+
       </div>
     ))}
   </div>

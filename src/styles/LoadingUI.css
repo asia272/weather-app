@@ -1,14 +1,6 @@
-:root {
-  --loader-bg: #312f4b;
-  --loader-card: #4a476f;
-  --white: #ffffff;
-}
-
-
-
 /* HERO SKELETON */
 .hero-skeleton {
-  background: var(--loader-bg);
+  background: var(--mid-blue);
   border-radius: 12px;
   padding: 1.25rem;
   min-height: 180px;
@@ -21,7 +13,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-
 }
 
 .hero-box {
@@ -53,7 +44,6 @@
 .loading-dots span {
   width: 10px;
   height: 10px;
-
   background-color: var(--white);
   border-radius: 50%;
   animation: bounce 0.6s infinite alternate;
@@ -62,6 +52,7 @@
 .loading-dots span:nth-child(2) {
   animation-delay: 0.2s;
 }
+
 .loading-dots span:nth-child(3) {
   animation-delay: 0.4s;
 }
@@ -71,6 +62,7 @@
     transform: translateY(0);
     opacity: 0.6;
   }
+
   to {
     transform: translateY(-10px);
     opacity: 1;
@@ -83,9 +75,10 @@
 }
 
 
-
-
 /* VARIABLES / STATS */
+.seleton-stat-card {
+  animation: pulse 1.5s infinite ease-in-out;
+}
 
 .skeleton-line {
   width: 10%;
@@ -94,12 +87,13 @@
   background: var(--white);
   border-radius: 6px;
   display: inline-block;
+
 }
 
 /* DAILY FORECAST */
-.forecast-card-skeleton{
+.forecast-card-skeleton {
   padding: 4.33rem 1rem;
-    animation: pulse 1.5s infinite ease-in-out;
+  animation: pulse 1.5s infinite ease-in-out;
 }
 
 
