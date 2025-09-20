@@ -88,7 +88,7 @@ export default function App() {
       }
       setWeather(null);
     } finally {
-      setLoading(true);
+      setLoading(false);
     }
   };
 

@@ -20,15 +20,24 @@ Users should be able to:
 - Switch between **Celsius/Fahrenheit**, **km/h–mph**, and **mm–inches** using the dropdown.  
 - Experience a fully **responsive layout** across devices.  
 - See **hover and focus states** for all interactive elements.  
+- **Skeleton loaders for every main component**:
+  - Current Weather → `HeroSkeleton`  
+  - Weather Stats → `VarsSkeleton`  
+  - Daily Forecast → `DailySkeleton`  
+  - Hourly Forecast → `HourlySkeleton`  
+  These skeleton components are **created separately** and **rendered conditionally** while data is loading to improve UX and maintain consistent styling.
+**Personal Touch & Enhancements**:  
+- Added **plus & bonus animations** for all loading states.  
+- Implemented **scroll-based animations (AOS)** for cards and sections.  
+- Custom **Not Found image** when a city is invalid.  
 
- **Personal Touch**: Added **scroll-based animations** (AOS) and a custom **Not Found image** when a city is invalid.  
-
+---
 ### Screenshot
-_Add your app screenshots here (desktop + mobile views)._  
+ 
 
 ### Links
-- **Live Demo:** [Your Vercel Deployment Link]()  
-- **Repository:** [GitHub Repo Link]()  
+- **Live Demo:** (https://weather-app-six-mocha-2yljnsbf39.vercel.app/)  
+- **Repository:** (https://github.com/asia272/weather-app)  
 
 ---
 
@@ -39,16 +48,21 @@ _Add your app screenshots here (desktop + mobile views)._
 - 🎨 CSS (variables, flexbox, grid) – responsive styling  
 - 🌍 [OpenMeteo API](https://open-meteo.com/) – free real-time weather data  
 - ✨ [AOS](https://michalsnik.github.io/aos/) – smooth scroll animations  
+
 - 🖼️ Custom **Not Found image** for error handling  
 - 🔤 Fonts: **DM Sans** & **Bricolage Grotesque**  
+- 🟢 **Plus & bonus animations** for loading states 
 
 ### What I learned
 - Handling **API data fetching** (OpenMeteo).  
 - Implementing **unit conversion helpers** for temperature, wind, and precipitation.  
 - Managing **state across multiple components** (CurrentWeather, WeatherStats, DailyForecast, HourlyForecast).  
-- Adding **AOS animations** to cards and sections.  
+- Adding **AOS scroll animations** to cards and sections.  
+- Adding **plus & bonus animations** for loading to improve UX.  
 - Structuring a project for **hackathon-ready deployment on Vercel**.  
+- Creating **individual skeleton components for each main UI component** and rendering them conditionally while waiting for API data.
 
+---
 ### Continued development
 - Add **geolocation support** (auto-detect user’s location).  
 - Integrate **charts** for hourly and weekly data visualization.  
@@ -72,6 +86,5 @@ _Add your app screenshots here (desktop + mobile views)._
 - Hackathon organizers for the challenge.  
 - OpenMeteo for free API data.  
 - Inspiration from modern weather app UI designs.  
-- ✨ Extra effort: Added **animations** & **Not Found image** to improve UX.  
-
+- ✨ Extra effort: Added **plus & bonus animations**, **scroll-based AOS animations**, and a **Not Found image** to improve UX.  
 ---
