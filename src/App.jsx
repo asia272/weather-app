@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
@@ -9,8 +8,7 @@ import HourlyForecast from "./components/HourlyForecast";
 import ErrorMessage from "./components/ErrorMessage";
 import NotFoundMessage from "./components/NotFoundMessage";
 
-
-// Skeleton loaders
+// Skeleton loaders (only for first render)
 import HeroSkeleton from "./components/Loader/HeroSkeleton";
 import VarsSkeleton from "./components/Loader/VarsSkeleton";
 import DailySkeleton from "./components/Loader/DailySkeleton";
@@ -18,22 +16,22 @@ import HourlySkeleton from "./components/Loader/HourlySkeleton";
 
 import { fetchCoordinates, fetchWeather } from "./api/openMeteo";
 
-
-
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-
 import "./App.css";
-import "./responsive/responsive.css"
+import "./responsive/responsive.css";
 
 export default function App() {
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState("");
   const [notFound, setNotFound] = useState(false);
-  const [loading, setLoading] = useState(true);
 
-  //Aos Animation setup
+  const [loading, setLoading] = useState(true); // ✅ for skeleton only first render
+  const [searching, setSearching] = useState(false); // ✅ for later searches
+  const [initialLoad, setInitialLoad] = useState(true); // ✅ flag for first render
+
+  // Aos Animation setup
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -46,31 +44,33 @@ export default function App() {
   const [units, setUnits] = useState({
     temperature: "C",
     windspeed: "km/h",
-    precipitation: "mm"
+    precipitation: "mm",
   });
 
   const [selectedDay, setSelectedDay] = useState(0);
   const [lastCity, setLastCity] = useState("Berlin");
   const DEFAULT_CITY = "Berlin";
 
-
-
   const handleSearch = async (city) => {
     if (!city) return;
     setLastCity(city);
-    setLoading(true);
     setError("");
     setNotFound(false);
+
+    if (initialLoad) {
+      setLoading(true); // first render → skeleton
+    } else {
+      setSearching(true); // later searches → searching message
+    }
 
     try {
       const location = await fetchCoordinates(city);
       if (!location) {
         setNotFound(true);
-        setWeather(null);
+        setWeather(null); // ✅ clear only on not found
         return;
       }
 
-      // Always fetch in metric → convert later
       const data = await fetchWeather(location.lat, location.lon, "metric");
 
       setWeather({
@@ -86,9 +86,11 @@ export default function App() {
       } else {
         setError("API error: Could not fetch weather data");
       }
-      setWeather(null);
+      setWeather(null); // ✅ clear only on error
     } finally {
       setLoading(false);
+      setSearching(false);
+      setInitialLoad(false);
     }
   };
 
@@ -103,68 +105,76 @@ export default function App() {
   }, []);
 
   return (
-
-  <div className="app-container">
-  {/* Header always visible */}
-  <section className="header-section">
-    <Header units={units} setUnits={setUnits} />
-  </section>
-
-  {/* Conditionally render SearchBar: only if no error */}
-  {!error && (
-    <section className="search-bar-section">
-      <SearchBar onSearch={handleSearch} />
-    </section>
-  )}
-
-  {/* Error & Not Found */}
-  {error ? (
-    <ErrorMessage message={error} onRetry={handleRetry} />
-  ) : notFound ? (
-    <NotFoundMessage onRetry={handleRetry} />
-  ) : (
-    <>
-      {/* Current Weather */}
-      <section className="current-weather-section">
-        {loading ? <HeroSkeleton /> : <CurrentWeather data={weather} units={units} />}
+    <div className="app-container">
+      {/* Header always visible */}
+      <section className="header-section">
+        <Header units={units} setUnits={setUnits} />
       </section>
 
-      {/* Weather Stats */}
-      <section className="weather-stats-section">
-        {loading ? <VarsSkeleton /> : <WeatherStats data={weather.current} units={units} />}
-      </section>
+      {/* Search bar (only if no error) */}
+      {!error && (
+        <section className="search-bar-section">
+          <SearchBar onSearch={handleSearch} />
+        </section>
+      )}
 
-      {/* Daily Forecast */}
-      <section
-        className="daily-forecast-section"
- 
-     
-      >
-        {loading ? <DailySkeleton /> : <DailyForecast daily={weather.daily} units={units} />}
-      </section>
+      {/* Searching message (only during searches) */}
+      {searching && (
+        <div className="searching-message">
+          <h3>🔍 Searching in progress…</h3>
+        </div>
+      )}
 
-      {/* Hourly Forecast */}
-      <section
-        className="hourly-forecast-section"
+      {/* Error & Not Found */}
+      {error ? (
+        <ErrorMessage message={error} onRetry={handleRetry} />
+      ) : notFound ? (
+        <NotFoundMessage onRetry={handleRetry} />
+      ) : (
+        <>
+          {/* Show skeletons ONLY on first render */}
+          {loading && !weather ? (
+            <>
+              <section className="current-weather-section">
+                <HeroSkeleton />
+              </section>
+              <section className="weather-stats-section">
+                <VarsSkeleton />
+              </section>
+              <section className="daily-forecast-section">
+                <DailySkeleton />
+              </section>
+              <section className="hourly-forecast-section">
+                <HourlySkeleton />
+              </section>
+            </>
+          ) : weather ? (
+            <>
+              <section className="current-weather-section">
+                <CurrentWeather data={weather} units={units} />
+              </section>
 
-      >
-        {loading ? (
-          <HourlySkeleton />
-        ) : (
-          <HourlyForecast
-            hourly={weather.hourly}
-            daily={weather.daily}
-            selectedDay={selectedDay}
-            setSelectedDay={setSelectedDay}
-            units={units}
-          />
-        )}
-      </section>
-    </>
-  )}
-</div>
+              <section className="weather-stats-section">
+                <WeatherStats data={weather.current} units={units} />
+              </section>
 
+              <section className="daily-forecast-section">
+                <DailyForecast daily={weather.daily} units={units} />
+              </section>
 
-
+              <section className="hourly-forecast-section">
+                <HourlyForecast
+                  hourly={weather.hourly}
+                  daily={weather.daily}
+                  selectedDay={selectedDay}
+                  setSelectedDay={setSelectedDay}
+                  units={units}
+                />
+              </section>
+            </>
+          ) : null}
+        </>
+      )}
+    </div>
   );
 }
