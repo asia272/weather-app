@@ -71,11 +71,11 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay, units = {}
                   alt={`Weather code ${code}`}
                   className="weather-icon"
                   style={{ width: "40px", height: "40px", margin: "0.5rem auto" }}
-                  data-aos="zoom-in"
+             
                 />
-                <p  data-aos="zoom-in">{new Date(time).toLocaleString("en-US", { hour: "numeric", hour12: true })}</p>
+                <p >{new Date(time).toLocaleString("en-US", { hour: "numeric", hour12: true })}</p>
               </div>
-              <p  data-aos="zoom-in">{temp}°</p>
+              <p >{temp}°</p>
             </div>
           );
         })}
