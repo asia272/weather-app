@@ -41,9 +41,6 @@ cursor: pointer;
 }
 
 
-*{
-  z-index: 0;
-}
 /* Dropdown Panel */
 .dropdown-menu {
   position: absolute;
@@ -55,7 +52,6 @@ cursor: pointer;
   padding:9px;
   width: 220px;
   z-index: 9 !important;
-
 }
 
 /* Sections */
