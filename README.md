@@ -58,6 +58,12 @@ Users should be able to:
 - 🖼️ Custom **Not Found image** for error handling  
 - 🔤 Fonts: **DM Sans** & **Bricolage Grotesque**  
 - 🟢 **Plus & bonus animations** for loading states 
+⏳ Debounced Search Hook (useDebounce) to reduce API calls
+
+🔄 Reverse Geocoding API to convert latitude/longitude → city name
+
+⌨️ Keyboard navigation support for better UX in search suggestions
+
 
 ### What I learned
 - Handling **API data fetching** (OpenMeteo).  
@@ -68,6 +74,11 @@ Users should be able to:
 - Structuring a project for **hackathon-ready deployment on Vercel**.  
 - Creating **individual skeleton components for each main UI component** and rendering them conditionally while waiting for API data.
 
+- Using reverse geocoding to auto-detect the user’s location.
+
+- Applying debounce to optimize performance of search suggestions.
+
+- Implementing keyboard navigation (↑ ↓ Enter Escape) for search suggestion dropdown.
 ---
 ### Continued development
 - Add **geolocation support** (auto-detect user’s location).  
