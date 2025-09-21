@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
@@ -8,8 +9,6 @@ import HourlyForecast from "./components/HourlyForecast";
 import ErrorMessage from "./components/ErrorMessage";
 import NotFoundMessage from "./components/NotFoundMessage";
 
-
-
 // Skeleton loaders (only for first render)
 import HeroSkeleton from "./components/Loader/HeroSkeleton";
 import VarsSkeleton from "./components/Loader/VarsSkeleton";
@@ -17,6 +16,7 @@ import DailySkeleton from "./components/Loader/DailySkeleton";
 import HourlySkeleton from "./components/Loader/HourlySkeleton";
 
 import { fetchCoordinates, fetchWeather } from "./api/openMeteo";
+import { reverseGeocode } from "./api/reverseGeocode";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -33,16 +33,6 @@ export default function App() {
   const [searching, setSearching] = useState(false); // for later searches
   const [initialLoad, setInitialLoad] = useState(true); // flag for first render
 
-  // Aos Animation setup
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: "ease-in-out",
-      once: true,
-      mirror: false,
-    });
-  }, []);
-
   const [units, setUnits] = useState({
     temperature: "C",
     windspeed: "km/h",
@@ -53,35 +43,33 @@ export default function App() {
   const [lastCity, setLastCity] = useState("Berlin");
   const DEFAULT_CITY = "Berlin";
 
-  const handleSearch = async (city) => {
-    if (!city) return;
-    setLastCity(city);
-    setError("");
-    setNotFound(false);
+  // Aos Animation setup
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: true,
+      mirror: false,
+    });
+  }, []);
 
-    if (initialLoad) {
-      setLoading(true); // first render → skeleton
-    } else {
-      setSearching(true); // later searches → searching message
-    }
+  //  DRY helper function for loading weather by lat/lon
 
+  const loadWeather = async (lat, lon, cityName, countryName = "") => {
     try {
-      const location = await fetchCoordinates(city);
-      if (!location) {
-        setNotFound(true);
-        setWeather(null); //  clear only on not found
-        return;
-      }
-
-      const data = await fetchWeather(location.lat, location.lon, "metric");
+      const data = await fetchWeather(lat, lon, "metric"); // still metric for now
 
       setWeather({
-        city: location.name,
-        country: location.country,
+        city: cityName,
+        country: countryName,
         current: data.current_weather,
         daily: data.daily,
         hourly: data.hourly,
       });
+
+      setLastCity(cityName);
+      setError("");
+      setNotFound(false);
     } catch (err) {
       if (err.message.includes("Location not found")) {
         setNotFound(true);
@@ -96,15 +84,75 @@ export default function App() {
     }
   };
 
+  // Handle manual search
+  const handleSearch = async (city) => {
+    if (!city) return;
+    setLastCity(city);
+    setError("");
+    setNotFound(false);
+
+    if (initialLoad) {
+      setLoading(true); // first render  skeleton
+    } else {
+      setSearching(true); // later searches searching message
+    }
+
+    try {
+      const location = await fetchCoordinates(city);
+      if (!location) {
+        setNotFound(true);
+        setWeather(null);
+      } else {
+        await loadWeather(location.lat, location.lon, location.name, location.country);
+        return; // exit here, avoid hitting finally twice
+      }
+    } catch (err) {
+      if (err.message.includes("Location not found")) {
+        setNotFound(true);
+      } else {
+        setError("API error: Could not fetch weather data");
+      }
+      setWeather(null);
+    } finally {
+      setLoading(false);
+      setSearching(false);
+      setInitialLoad(false);
+    }
+  };
+  
+//  Auto-detect location on first load
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (pos) => {
+          const { latitude, longitude } = pos.coords;
+          try {
+            const location = await reverseGeocode(latitude, longitude);
+            if (!location) {
+              handleSearch(DEFAULT_CITY); // fallback
+              return;
+            }
+            await loadWeather(latitude, longitude, location.name, location.country);
+          } catch (err) {
+            console.error("Location fetch failed:", err);
+            handleSearch(DEFAULT_CITY);
+          }
+        },
+        () => {
+          // if denied or error → fallback
+          handleSearch(DEFAULT_CITY);
+        }
+      );
+    } else {
+      handleSearch(DEFAULT_CITY);
+    }
+  }, []);
+//Handle Retry
   const handleRetry = () => {
     setError("");
     setNotFound(false);
     handleSearch(lastCity || DEFAULT_CITY);
   };
-
-  useEffect(() => {
-    handleSearch(lastCity || DEFAULT_CITY);
-  }, []);
 
   return (
     <div className="app-container">
@@ -118,9 +166,7 @@ export default function App() {
         <section className="search-bar-section">
           <SearchBar onSearch={handleSearch} searching={searching} />
         </section>
-
       )}
-
 
       {/* Error & Not Found */}
       {error ? (
@@ -175,3 +221,4 @@ export default function App() {
     </div>
   );
 }
+
