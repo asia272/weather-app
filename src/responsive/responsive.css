@@ -2,7 +2,7 @@
 /* For Main App container */
 @media (max-width: 768px) {
   .current-weather-section {
-    background: url("../src/assets/images/bg-today-small.svg") no-repeat center/cover;
+    background: url("../assets/images/bg-today-small.svg") no-repeat center/cover;
   }
 }
 
