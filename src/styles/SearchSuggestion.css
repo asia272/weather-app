@@ -25,11 +25,13 @@
   margin: 4px;
   border-radius: 10px;
   transition: background 0.2s;
+  border: 1px solid transparent;
 }
 
 .suggestions-dropdown li:hover,
 .suggestions-dropdown li.active {
   background: var(--light-blue);
+    border-color: var(--very-light-gray);
 }
 
 /* Clear button inside input */
