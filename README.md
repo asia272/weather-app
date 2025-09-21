@@ -15,9 +15,11 @@ Users should be able to:
 - See additional metrics: **feels like**, humidity, wind speed, precipitation.  
 - Browse a **7-day forecast** with daily high/low temperatures and icons.  
 - View an **hourly forecast** showing temperature changes throughout the day.  
+- Debounced Search Input → optimized API requests when typing in the search bar.
 - Switch between days using the **day selector** in the hourly forecast section.  
 - Toggle between **Imperial and Metric units** via the units dropdown.  
-- Switch between **Celsius/Fahrenheit**, **km/h–mph**, and **mm–inches** using the dropdown.  
+- Switch between **Celsius/Fahrenheit**, **km/h–mph**, and **mm–inches** using the dropdown. 
+- Navigate search suggestions using keyboard controls (↑ ↓ Enter Escape). 
 - Experience a fully **responsive layout** across devices.  
 - See **hover and focus states** for all interactive elements.  
 - **Skeleton loaders for every main component**:
@@ -32,8 +34,9 @@ Users should be able to:
 **Personal Touch & Enhancements**:  
 - Added **plus & bonus animations** for all loading states.  
 - Implemented **scroll-based animations (AOS)** for cards and sections.  
-- Custom **Not Found image** when a city is invalid.  
-
+- Custom **Not Found image** when a city is invalid. 
+- ⌨️ Keyboard navigation on search suggestions → arrow keys to move, Enter to select, Escape to dismiss. 
+- Reverse Geocoding (Use My Location) → detect and search weather based on the user’s current location.
 ---
 ### Screenshot
  
