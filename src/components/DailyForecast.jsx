@@ -20,18 +20,18 @@ function DailyForecast({ daily, units = {} }) {
           const minTemp = convertTemperature(daily.temperature_2m_min[idx], units.temperature || "C");
 
           return (
-            <div key={date} className="forecast-card" data-aos="fade-up"
-              data-aos-delay={idx * 100}  >
-              <p>{new Date(date).toLocaleDateString("en-US", { weekday: "short" })}</p>
+            <div key={date} className="forecast-card">
+              <p data-aos="zoom-in">{new Date(date).toLocaleDateString("en-US", { weekday: "short" })}</p>
               <img
                 src={icon}
                 alt={`Weather code ${code}`}
                 className="weather-icon"
                 style={{ width: "40px", height: "40px", margin: "0.5rem auto" }}
+                data-aos="zoom-in"
               />
               <div className="daily-temp">
-                <p>{maxTemp}°</p>
-                <p>{minTemp}°</p>
+                <p data-aos="zoom-in">{maxTemp}°</p>
+                <p data-aos="zoom-in">{minTemp}°</p>
               </div>
 
             </div>
