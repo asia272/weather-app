@@ -1,4 +1,3 @@
-
 import React from "react";
 import "../styles/DailyForecast.css";
 import { getWeatherIcon } from "../utils/weatherIcons";
@@ -11,33 +10,42 @@ function DailyForecast({ daily, units = {} }) {
     <section className="daily-forecast">
       <h3>Daily Forecast</h3>
 
-      <div className="forecast-list">
+      <ul className="forecast-list">
         {daily.time.map((date, idx) => {
           const code = daily.weathercode[idx];
           const icon = getWeatherIcon(code);
 
-          const maxTemp = convertTemperature(daily.temperature_2m_max[idx], units.temperature || "C");
-          const minTemp = convertTemperature(daily.temperature_2m_min[idx], units.temperature || "C");
+          const maxTemp = convertTemperature(
+            daily.temperature_2m_max[idx],
+            units.temperature || "C"
+          );
+          const minTemp = convertTemperature(
+            daily.temperature_2m_min[idx],
+            units.temperature || "C"
+          );
 
           return (
-            <div key={date} className="forecast-card">
-              <p >{new Date(date).toLocaleDateString("en-US", { weekday: "short" })}</p>
-              <img
-                src={icon}
-                alt={`Weather code ${code}`}
-                className="weather-icon"
-                style={{ width: "40px", height: "40px", margin: "0.5rem auto" }}
-       
-              />
-              <div className="daily-temp">
-                <p>{maxTemp}°</p>
-                <p>{minTemp}°</p>
-              </div>
+            <li key={date} className="forecast-card">
+              <time dateTime={date}>
+                {new Date(date).toLocaleDateString("en-US", { weekday: "short" })}
+              </time>
 
-            </div>
+              <figure>
+                <img
+                  src={icon}
+                  alt={`Weather icon code ${code}`}
+                  className="weather-icon"
+                  style={{ width: "40px", height: "40px", margin: "0.5rem auto" }}
+                />
+                <figcaption className="daily-temp">
+                  <span>{maxTemp}°</span>
+                  <span>{minTemp}°</span>
+                </figcaption>
+              </figure>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </section>
   );
 }

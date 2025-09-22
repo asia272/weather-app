@@ -1,4 +1,3 @@
-
 import "../styles/CurrentWeather.css";
 import { getWeatherIcon } from "../utils/weatherIcons";
 import { convertTemperature } from "../utils/convertUnits"; 
@@ -23,17 +22,21 @@ const CurrentWeather = ({ data, units = {} }) => {
   });
 
   return (
-    <div className="current-weather"  data-aos="zoom-in">
-      <div className="current-weather-content">
-        <h2>{city}, {country}</h2>
-        <p className="current-date">{formattedDate}</p>
-      </div>
+    <section className="current-weather" data-aos="zoom-in">
+      <header className="current-weather-content">
+        <h2>
+          {city}, {country}
+        </h2>
+        <time className="current-date" dateTime={now.toISOString()}>
+          {formattedDate}
+        </time>
+      </header>
 
-      <div className="current-weather-icon">
+      <figure className="current-weather-icon">
         <img src={icon} alt="Weather Icon" />
-        <p className="current-temp">{displayTemp}°</p>
-      </div>
-    </div>
+        <figcaption className="current-temp">{displayTemp}°</figcaption>
+      </figure>
+    </section>
   );
 };
 

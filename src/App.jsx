@@ -43,41 +43,48 @@ export default function App() {
 
   return (
     <div className="app-container">
-      <section className="header-section">
+      {/* Header */}
+      <header className="header-section">
         <Header units={units} setUnits={setUnits} />
-      </section>
+      </header>
 
+      {/* Search Bar */}
       {!error && (
         <section className="search-bar-section">
           <SearchBar onSearch={handleSearch} searching={searching} />
         </section>
       )}
 
+      {/* Error / Not Found States */}
       {error ? (
-        <ErrorMessage message={error} onRetry={handleRetry} />
+        <section className="error-section" role="alert">
+          <ErrorMessage message={error} onRetry={handleRetry} />
+        </section>
       ) : notFound ? (
-        <NotFoundMessage onRetry={handleRetry} />
+        <section className="notfound-section" role="alert">
+          <NotFoundMessage onRetry={handleRetry} />
+        </section>
       ) : (
         <>
           {loading && !weather ? (
             <>
-              <section className="current-weather-section"><HeroSkeleton /></section>
-              <section className="weather-stats-section"><VarsSkeleton /></section>
-              <section className="daily-forecast-section"><DailySkeleton /></section>
-              <section className="hourly-forecast-section"><HourlySkeleton /></section>
+              <article className="current-weather-section"><HeroSkeleton /></article>
+              <article className="weather-stats-section"><VarsSkeleton /></article>
+              <article className="daily-forecast-section"><DailySkeleton /></article>
+              <article className="hourly-forecast-section"><HourlySkeleton /></article>
             </>
           ) : weather ? (
             <>
-              <section className="current-weather-section">
+              <article className="current-weather-section">
                 <CurrentWeather data={weather} units={units} />
-              </section>
-              <section className="weather-stats-section">
+              </article>
+              <article className="weather-stats-section">
                 <WeatherStats data={weather.current} units={units} />
-              </section>
-              <section className="daily-forecast-section">
+              </article>
+              <article className="daily-forecast-section">
                 <DailyForecast daily={weather.daily} units={units} />
-              </section>
-              <section className="hourly-forecast-section">
+              </article>
+              <article className="hourly-forecast-section">
                 <HourlyForecast
                   hourly={weather.hourly}
                   daily={weather.daily}
@@ -85,7 +92,7 @@ export default function App() {
                   setSelectedDay={setSelectedDay}
                   units={units}
                 />
-              </section>
+              </article>
             </>
           ) : null}
         </>
