@@ -1,8 +1,5 @@
 
-
-
-
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../styles/HourlyForecast.css";
 import { getWeatherIcon } from "../utils/weatherIcons";
 import { convertTemperature } from "../utils/convertUnits";
@@ -12,6 +9,20 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay, units = {}
   if (!hourly || !daily) return null;
 
   const [open, setOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  //  Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   // Show only hours of the chosen day
   const start = selectedDay * 24;
@@ -20,12 +31,14 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay, units = {}
   return (
     <section className="hourly-forecast">
       <div className="hourly-forecast-top">
-        <h3 >Hourly Forecast</h3>
+        <h3>Hourly Forecast</h3>
 
         {/*  Custom dropdown */}
-        <div className="day-dropdown" >
-          <button className="day-btn"  onClick={() => setOpen(!open)}>
-            {new Date(daily.time[selectedDay]).toLocaleDateString("en-US", { weekday: "long" })}
+        <div className="day-dropdown" ref={dropdownRef}>
+          <button className="day-btn" onClick={() => setOpen(!open)}>
+            {new Date(daily.time[selectedDay]).toLocaleDateString("en-US", {
+              weekday: "long",
+            })}
             <img
               src={dropDownIcon}
               alt="toggle dropdown"
@@ -44,7 +57,9 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay, units = {}
                     setOpen(false);
                   }}
                 >
-                  {new Date(date).toLocaleDateString("en-US", { weekday: "long" })}
+                  {new Date(date).toLocaleDateString("en-US", {
+                    weekday: "long",
+                  })}
                 </button>
               ))}
             </div>
@@ -71,11 +86,15 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay, units = {}
                   alt={`Weather code ${code}`}
                   className="weather-icon"
                   style={{ width: "40px", height: "40px", margin: "0.5rem auto" }}
-             
                 />
-                <p >{new Date(time).toLocaleString("en-US", { hour: "numeric", hour12: true })}</p>
+                <p>
+                  {new Date(time).toLocaleString("en-US", {
+                    hour: "numeric",
+                    hour12: true,
+                  })}
+                </p>
               </div>
-              <p >{temp}°</p>
+              <p>{temp}°</p>
             </div>
           );
         })}
@@ -85,3 +104,5 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay, units = {}
 }
 
 export default HourlyForecast;
+
+

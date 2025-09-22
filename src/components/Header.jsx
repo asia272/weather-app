@@ -1,16 +1,32 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect, useRef } from "react";
 import "../styles/Header.css";
 import logo from "../assets/images/logo.svg";
 import CheckIcon from "../assets/images/icon-checkmark.svg";
 import unitIcon from "../assets/images/icon-units.svg";
-import dropDownIcon from "../assets/images/icon-dropdown.svg"
+import dropDownIcon from "../assets/images/icon-dropdown.svg";
 
 function Header({ units, setUnits }) {
   const [open, setOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const handleChange = (category, value) => {
     setUnits((prev) => ({ ...prev, [category]: value }));
   };
+
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="header">
@@ -18,11 +34,15 @@ function Header({ units, setUnits }) {
         <img src={logo} alt="weather-app-logo" />
       </div>
 
-      <div className="units-dropdown" data-aos="zoom-in">
+      <div className="units-dropdown" data-aos="zoom-in" ref={dropdownRef}>
         <button className="units-btn" onClick={() => setOpen(!open)}>
           <img src={unitIcon} alt="units" className="unit-icon" />
           <span>Units</span>
-          <img src={dropDownIcon} alt="dropdown" className={`dropdown-icon ${open ? "open" : ""}`} />
+          <img
+            src={dropDownIcon}
+            alt="dropdown"
+            className={`dropdown-icon ${open ? "open" : ""}`}
+          />
         </button>
 
         {open && (
@@ -101,3 +121,4 @@ function Header({ units, setUnits }) {
 }
 
 export default Header;
+

@@ -1,6 +1,6 @@
 .daily-forecast {
   margin: 1rem auto;
-
+ z-index: var(--z-base);
 }
 
 .daily-forecast h3 {

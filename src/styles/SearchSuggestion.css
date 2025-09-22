@@ -8,7 +8,8 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   border-radius: 0.6rem;
   margin-top: 0.6rem;
-  z-index: 30;
+  /* z-index: 30; */
+  z-index: var(--z-dropdown);
   overflow: hidden;
 }
 
@@ -31,7 +32,7 @@
 .suggestions-dropdown li:hover,
 .suggestions-dropdown li.active {
   background: var(--light-blue);
-    border-color: var(--very-light-gray);
+  border-color: var(--very-light-gray);
 }
 
 /* Clear button inside input */

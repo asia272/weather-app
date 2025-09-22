@@ -136,7 +136,7 @@ export default function SearchBar({ onSearch, searching }) {
           />
         </div>
 
-        <button type="submit" data-aos="fade-left">
+        <button type="submit" data-aos="fade-left" className="custom-btn">
           Search
         </button>
       </form>

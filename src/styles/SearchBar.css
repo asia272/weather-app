@@ -30,38 +30,29 @@
   position: relative;
   width: 100%;
 }
-.search-bar-form .input-box img{
+
+.search-bar-form .input-box img {
   position: absolute;
-height: 1.22rem;
-    left: 0.99rem;
-    position: absolute;
-    top: 1.19rem;
-    width: 2.1rem;
-    z-index: 1;
+  height: 1.22rem;
+  left: 0.99rem;
+  position: absolute;
+  top: 1.19rem;
+  width: 2.1rem;
+  z-index: 1;
 }
 
 .search-bar-form input::placeholder {
   color: var(--light-gray);
 }
-.inputs{
-    flex: 1;
+
+.inputs {
+  flex: 1;
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
-.search-bar-form button {
-  background: var(--primary-blue);
-  border: 3px solid transparent;
-  color: var(--white);
-  font-size: 1.11rem;
-  border-radius: 12px;
-  padding: 0.9rem 1.4rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  outline: 2px solid transparent;
-}
+
 
 /* when focus */
 .search-bar button:focus {
@@ -74,11 +65,81 @@ height: 1.22rem;
   border-color: var(--dark-blue);
 }
 
-/* when hover */
-.search-bar-form button:hover {
-  background: var(--dark-blue-accent);
+
+
+.custom-btn {
+  position: relative;
+  background: var(--primary-blue);
+  border: 3px solid transparent;
+  color: var(--white);
+  font-size: 1.11rem;
+  line-height: 16px;
+  font-weight: 500;
+  border-radius: 12px;
+  transition: all 0.5s linear;
+  text-transform: capitalize;
+  /* z-index: 1; */
+    z-index: var(--z-base);
+  transition: background 0.2s linear;
+  cursor: pointer;
+  outline: 2px solid transparent;
+  padding: 0.88rem 1.55rem;
+  display: inline-block;
+
+}
+
+.custom-btn::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 50%;
+  height: 0;
+  visibility: hidden;
+  background-color: var(--dark-blue-accent);
+  opacity: 0;
+  z-index: -1;
+   outline: 2px solid transparent;
+  transition: all 0.4s ease-in-out;
+  border: 3px solid transparent;
+
+ z-index: -1;
+
+}
+
+.custom-btn::after {
+  position: absolute;
+  background-color: var(--dark-blue-accent);
+  bottom: 0;
+  right: 0;
+  content: "";
+  width: 50%;
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.4s ease-in-out;
+  border: 3px solid transparent;
+
+     z-index: -1;
 }
 
 
+.custom-btn:hover{
+  outline: none !important;
 
+}
 
+.custom-btn:hover::before {
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+}
+
+.custom-btn:hover::after {
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+}

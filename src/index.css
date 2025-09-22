@@ -4,7 +4,7 @@
 @font-face {
   font-family: "DM Sans";
   src: url("./assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf") format("truetype");
-  font-weight: 100 900; 
+  font-weight: 100 900;
   font-style: normal;
 }
 
@@ -32,13 +32,13 @@
   --neutral-600: rgb(61, 59, 94);
   --neutral-300: hsl(240, 6%, 70%);
   --neutral-200: hsl(250, 6%, 84%);
-  --neutral-0:   hsl(0, 0%, 100%);
+  --neutral-0: hsl(0, 0%, 100%);
 
   /* Semantic aliases of natural colors*/
   --dark-blue: var(--neutral-900);
   --mid-blue: var(--neutral-800);
   --light-blue: var(--neutral-700);
-  --very-light-gray:var(--neutral-600);
+  --very-light-gray: var(--neutral-600);
   --gray: var(--neutral-300);
   --light-gray: var(--neutral-200);
   --white: var(--neutral-0);
@@ -57,4 +57,15 @@
   --font-body: "DM Sans", sans-serif;
   --font-heading: "Bricolage Grotesque", sans-serif;
   --font-size-body: 18px;
+
+  /* z-index system */
+
+  --z-search-progress: 1100;
+
+  --z-base: 1;
+  --z-card: 10;
+  --z-dropdown: 100;
+  --z-modal: 1000;
+
+
 }
