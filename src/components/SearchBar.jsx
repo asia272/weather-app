@@ -1,5 +1,7 @@
 
 
+
+
 import { useState, useEffect, useRef } from "react";
 import SearchInProgress from "./SearchInProgress";
 import SearchSuggestion from "./SearchSuggestion";
@@ -17,7 +19,7 @@ export default function SearchBar({ onSearch, searching }) {
   // normalize helper
   const normalizeInput = (str) => str.replace(/\s+/g, " ").trim();
 
-  // --- fetch suggestions (only this one!) ---
+  // --- fetch suggestions ---
   useEffect(() => {
     const normalized = normalizeInput(debouncedCity);
     if (!normalized) {
@@ -60,6 +62,18 @@ export default function SearchBar({ onSearch, searching }) {
       cancelled = true;
     };
   }, [debouncedCity]);
+
+  // --- click outside to close suggestions ---
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+        setSuggestions([]);
+        setActiveIndex(-1);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // handle submit
   const handleSubmit = (e) => {

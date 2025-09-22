@@ -21,17 +21,17 @@ function DailyForecast({ daily, units = {} }) {
 
           return (
             <div key={date} className="forecast-card">
-              <p data-aos="zoom-in">{new Date(date).toLocaleDateString("en-US", { weekday: "short" })}</p>
+              <p >{new Date(date).toLocaleDateString("en-US", { weekday: "short" })}</p>
               <img
                 src={icon}
                 alt={`Weather code ${code}`}
                 className="weather-icon"
                 style={{ width: "40px", height: "40px", margin: "0.5rem auto" }}
-                data-aos="zoom-in"
+       
               />
               <div className="daily-temp">
-                <p data-aos="zoom-in">{maxTemp}°</p>
-                <p data-aos="zoom-in">{minTemp}°</p>
+                <p>{maxTemp}°</p>
+                <p>{minTemp}°</p>
               </div>
 
             </div>
