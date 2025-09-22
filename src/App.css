@@ -3,18 +3,20 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: var(--font-body);
   font-size: var(--font-size-body);
   background-color: var(--dark-blue);
-
+  color: var(--white);
 }
 
 
-h3{
+h3 {
   font-weight: 500;
   font-size: 19px;
 }
+
 .app-container {
   margin-left: auto;
   margin-right: auto;
@@ -27,10 +29,7 @@ h3{
     "stats hourly"
     "daily hourly";
   grid-template-columns: 2fr 1fr;
-
-grid-template-rows: auto auto auto auto minmax(0, 1fr);
-
-
+  grid-template-rows: auto auto auto auto minmax(0, 1fr);
   gap: 1.2rem;
   padding: 2rem;
   background-color: var(--dark-blue);
@@ -39,6 +38,8 @@ grid-template-rows: auto auto auto auto minmax(0, 1fr);
   color: var(--white);
 
 }
+
+
 
 /* Assign sections to grid areas */
 .header-section {
@@ -58,20 +59,13 @@ grid-template-rows: auto auto auto auto minmax(0, 1fr);
   grid-area: search;
 
 }
-li{
+
+li {
   list-style: none;
 }
+
 .current-weather-section {
   grid-area: current;
-  display: flex;
-  align-items: center;
-  min-height: 280px;        
-  background: url("../src/assets/images/bg-today-large.svg") no-repeat center;
-  background-size: cover;  
-  border-radius: 12px;
-  padding: 2rem;
-  position: relative;
-
 }
 
 .weather-stats-section {
@@ -80,38 +74,10 @@ li{
 
 .daily-forecast-section {
   grid-area: daily;
-  /* background-color: var(--very-light-gray); */
-  /* min-height: 278px;
-  max-height: 278px;  */
 }
 
 .hourly-forecast-section {
   grid-area: hourly;
-
-    /* border: 1px solid var(--very-light-gray); */
-    background: var(--mid-blue);
-    max-height: 704px;
+  background: var(--mid-blue);
+  max-height: 700px;
 }
-
-button {
-  border: none;
-}
-
-.loading-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--white);
-  font-size: 1.5rem;
-  font-weight: bold;
-  z-index: 1000;
-}
-
-
-
-
-
-

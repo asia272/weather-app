@@ -18,10 +18,12 @@
   min-height: 0;
   max-height: 100%;
   padding: 0;
-
-
+    padding: 0;
+  margin-inline: -16px; 
+  padding-inline: 16px;
   scrollbar-width: thin;      
   scrollbar-color: var(--very-light-gray) var(--mid-blue);
+
 }
 
 
@@ -159,3 +161,4 @@
 .dropdown-icon.open {
   transform: rotate(180deg);
 }
+

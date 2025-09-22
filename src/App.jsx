@@ -66,6 +66,8 @@ export default function App() {
 
       ) : (
         <>
+
+
           {loading && !weather ? (
             <>
               <article className="current-weather-section"><HeroSkeleton /></article>
