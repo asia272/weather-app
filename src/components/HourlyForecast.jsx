@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/HourlyForecast.css";
 import { getWeatherIcon } from "../utils/weatherIcons";
@@ -11,7 +10,7 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay, units = {}
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  //  Close dropdown when clicking outside
+  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -30,12 +29,17 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay, units = {}
 
   return (
     <section className="hourly-forecast">
-      <div className="hourly-forecast-top">
+      <header className="hourly-forecast-top">
         <h3>Hourly Forecast</h3>
 
-        {/*  Custom dropdown */}
-        <div className="day-dropdown" ref={dropdownRef}>
-          <button className="day-btn" onClick={() => setOpen(!open)}>
+        {/* Custom dropdown */}
+        <nav className="day-dropdown" ref={dropdownRef} aria-label="Select forecast day">
+          <button
+            className="day-btn"
+            aria-haspopup="listbox"
+            aria-expanded={open}
+            onClick={() => setOpen(!open)}
+          >
             {new Date(daily.time[selectedDay]).toLocaleDateString("en-US", {
               weekday: "long",
             })}
@@ -47,28 +51,31 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay, units = {}
           </button>
 
           {open && (
-            <div className="day-menu">
+            <ul className="day-menu" role="listbox">
               {daily.time.map((date, idx) => (
-                <button
-                  key={date}
-                  className={`day-option ${selectedDay === idx ? "active" : ""}`}
-                  onClick={() => {
-                    setSelectedDay(idx);
-                    setOpen(false);
-                  }}
-                >
-                  {new Date(date).toLocaleDateString("en-US", {
-                    weekday: "long",
-                  })}
-                </button>
+                <li key={date}>
+                  <button
+                    className={`day-option ${selectedDay === idx ? "active" : ""}`}
+                    role="option"
+                    aria-selected={selectedDay === idx}
+                    onClick={() => {
+                      setSelectedDay(idx);
+                      setOpen(false);
+                    }}
+                  >
+                    {new Date(date).toLocaleDateString("en-US", {
+                      weekday: "long",
+                    })}
+                  </button>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
-        </div>
-      </div>
+        </nav>
+      </header>
 
       {/* Hourly cards */}
-      <div className="hourly-list">
+      <ul className="hourly-list">
         {hourly.time.slice(start, end).map((time, idx) => {
           const code = hourly.weathercode[start + idx];
           const icon = getWeatherIcon(code);
@@ -79,30 +86,29 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay, units = {}
           );
 
           return (
-            <div key={time} className="hour-card">
+            <li key={time} className="hour-card">
               <div className="hourly-icons">
                 <img
                   src={icon}
-                  alt={`Weather code ${code}`}
+                  alt={`Weather condition code ${code}`}
                   className="weather-icon"
                   style={{ width: "40px", height: "40px", margin: "0.5rem auto" }}
                 />
-                <p>
+                <time dateTime={time}>
                   {new Date(time).toLocaleString("en-US", {
                     hour: "numeric",
                     hour12: true,
                   })}
-                </p>
+                </time>
               </div>
               <p>{temp}°</p>
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </section>
   );
 }
 
 export default HourlyForecast;
-
 

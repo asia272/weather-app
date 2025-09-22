@@ -1,4 +1,6 @@
 
+
+
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/Header.css";
 import logo from "../assets/images/logo.svg";
@@ -13,7 +15,6 @@ function Header({ units, setUnits }) {
   const handleChange = (category, value) => {
     setUnits((prev) => ({ ...prev, [category]: value }));
   };
-
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -30,24 +31,39 @@ function Header({ units, setUnits }) {
 
   return (
     <header className="header">
+      {/* Logo */}
       <div className="logo" data-aos="zoom-in">
-        <img src={logo} alt="weather-app-logo" />
+        <a href="/" aria-label="Weather App Home">
+          <img src={logo} alt="Weather app logo" />
+        </a>
       </div>
 
-      <div className="units-dropdown" data-aos="zoom-in" ref={dropdownRef}>
-        <button className="units-btn" onClick={() => setOpen(!open)}>
-          <img src={unitIcon} alt="units" className="unit-icon" />
+      {/* Units Dropdown */}
+      <nav
+        className="units-dropdown"
+        data-aos="zoom-in"
+        ref={dropdownRef}
+        aria-label="Units selection menu"
+      >
+        <button
+          className="units-btn"
+          aria-haspopup="true"
+          aria-expanded={open}
+          onClick={() => setOpen(!open)}
+        >
+          <img src={unitIcon} alt="Units icon" className="unit-icon" />
           <span>Units</span>
           <img
             src={dropDownIcon}
-            alt="dropdown"
+            alt="Dropdown arrow"
             className={`dropdown-icon ${open ? "open" : ""}`}
           />
         </button>
 
         {open && (
-          <div className="dropdown-menu">
-            <div className="dropdown-section">
+          <ul className="dropdown-menu" role="menu">
+            {/* Temperature */}
+            <li className="dropdown-section">
               <h5>Switch to Imperial</h5>
               <p className="dropdown-label">Temperature</p>
               <button
@@ -56,7 +72,7 @@ function Header({ units, setUnits }) {
               >
                 Celsius (°C)
                 {units.temperature === "C" && (
-                  <img src={CheckIcon} alt="selected" className="check-icon" />
+                  <img src={CheckIcon} alt="Selected" className="check-icon" />
                 )}
               </button>
               <button
@@ -65,12 +81,13 @@ function Header({ units, setUnits }) {
               >
                 Fahrenheit (°F)
                 {units.temperature === "F" && (
-                  <img src={CheckIcon} alt="selected" className="check-icon" />
+                  <img src={CheckIcon} alt="Selected" className="check-icon" />
                 )}
               </button>
-            </div>
+            </li>
 
-            <div className="dropdown-section">
+            {/* Wind Speed */}
+            <li className="dropdown-section">
               <p className="dropdown-label">Wind Speed</p>
               <button
                 className={units.windspeed === "km/h" ? "active" : ""}
@@ -78,7 +95,7 @@ function Header({ units, setUnits }) {
               >
                 km/h
                 {units.windspeed === "km/h" && (
-                  <img src={CheckIcon} alt="selected" className="check-icon" />
+                  <img src={CheckIcon} alt="Selected" className="check-icon" />
                 )}
               </button>
               <button
@@ -87,12 +104,13 @@ function Header({ units, setUnits }) {
               >
                 mph
                 {units.windspeed === "mph" && (
-                  <img src={CheckIcon} alt="selected" className="check-icon" />
+                  <img src={CheckIcon} alt="Selected" className="check-icon" />
                 )}
               </button>
-            </div>
+            </li>
 
-            <div className="dropdown-section">
+            {/* Precipitation */}
+            <li className="dropdown-section">
               <p className="dropdown-label">Precipitation</p>
               <button
                 className={units.precipitation === "mm" ? "active" : ""}
@@ -100,7 +118,7 @@ function Header({ units, setUnits }) {
               >
                 Millimeters (mm)
                 {units.precipitation === "mm" && (
-                  <img src={CheckIcon} alt="selected" className="check-icon" />
+                  <img src={CheckIcon} alt="Selected" className="check-icon" />
                 )}
               </button>
               <button
@@ -109,16 +127,15 @@ function Header({ units, setUnits }) {
               >
                 Inches (in)
                 {units.precipitation === "in" && (
-                  <img src={CheckIcon} alt="selected" className="check-icon" />
+                  <img src={CheckIcon} alt="Selected" className="check-icon" />
                 )}
               </button>
-            </div>
-          </div>
+            </li>
+          </ul>
         )}
-      </div>
+      </nav>
     </header>
   );
 }
 
 export default Header;
-

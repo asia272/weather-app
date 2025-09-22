@@ -78,8 +78,7 @@
   border-radius: 12px;
   transition: all 0.5s linear;
   text-transform: capitalize;
-  /* z-index: 1; */
-    z-index: var(--z-base);
+  z-index: 1;
   transition: background 0.2s linear;
   cursor: pointer;
   outline: 2px solid transparent;
@@ -103,7 +102,7 @@
   transition: all 0.4s ease-in-out;
   border: 3px solid transparent;
 
- z-index: -1;
+
 
 }
 
@@ -121,13 +120,13 @@
   transition: all 0.4s ease-in-out;
   border: 3px solid transparent;
 
-     z-index: -1;
+    
 }
 
 
 .custom-btn:hover{
   outline: none !important;
-
+  border: none;
 }
 
 .custom-btn:hover::before {

@@ -57,13 +57,13 @@ export default function App() {
 
       {/* Error / Not Found States */}
       {error ? (
-        <section className="error-section" role="alert">
-          <ErrorMessage message={error} onRetry={handleRetry} />
-        </section>
+
+        <ErrorMessage message={error} onRetry={handleRetry} role="alert" />
+
       ) : notFound ? (
-        <section className="notfound-section" role="alert">
-          <NotFoundMessage onRetry={handleRetry} />
-        </section>
+
+        <NotFoundMessage onRetry={handleRetry} role="alert" />
+
       ) : (
         <>
           {loading && !weather ? (

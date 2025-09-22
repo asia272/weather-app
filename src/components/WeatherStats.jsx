@@ -1,4 +1,3 @@
-
 import React from "react";
 import "../styles/WeatherStats.css";
 import {
@@ -40,14 +39,14 @@ function WeatherStats({ data, units = {} }) {
   ];
 
   return (
-    <section className="weather-stats">
+    <section className="weather-stats" aria-label="Weather statistics">
       {stats.map((stat, index) => (
-        <div key={index} className="stat-card">
+        <article key={index} className="stat-card">
           <h4 data-aos="zoom-in">{stat.title}</h4>
           <p data-aos="zoom-in">
             {stat.value} {stat.unit}
           </p>
-        </div>
+        </article>
       ))}
     </section>
   );

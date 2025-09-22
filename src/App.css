@@ -58,7 +58,9 @@ grid-template-rows: auto auto auto auto minmax(0, 1fr);
   grid-area: search;
 
 }
-
+li{
+  list-style: none;
+}
 .current-weather-section {
   grid-area: current;
   display: flex;

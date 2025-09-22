@@ -111,8 +111,8 @@ export default function SearchBar({ onSearch, searching }) {
   };
 
   return (
-    <div className="search-bar" ref={wrapperRef}>
-      <h1 data-aos="fade-down">How's the sky looking today?</h1>
+    <section className="search-bar" ref={wrapperRef}>
+      <h1 data-aos="fade-down">How &apos;s the sky looking today?</h1>
       <form className="search-bar-form" onSubmit={handleSubmit} autoComplete="off">
         <div className="inputs" style={{ position: "relative" }}>
           <div className="input-box">
@@ -140,6 +140,6 @@ export default function SearchBar({ onSearch, searching }) {
           Search
         </button>
       </form>
-    </div>
+    </section>
   );
 }

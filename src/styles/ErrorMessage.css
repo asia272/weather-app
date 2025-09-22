@@ -2,6 +2,8 @@
   grid-column: 1 / -1; 
   display: flex;
   justify-content: center;
+  width: 100%;
+  margin: auto;
   align-items: center;
   min-height: 70vh; 
 }
