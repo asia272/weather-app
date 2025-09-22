@@ -19,7 +19,12 @@ Users should be able to:
 - Switch between days using the **day selector** in the hourly forecast section.  
 - Toggle between **Imperial and Metric units** via the units dropdown.  
 - Switch between **Celsius/Fahrenheit**, **km/h–mph**, and **mm–inches** using the dropdown. 
-- Navigate search suggestions using keyboard controls (↑ ↓ Enter Escape). 
+- Navigate search suggestions using keyboard controls (↑ ↓ Enter Escape).
+- Search suggestions are **normalized** → extra spaces inside city names are automatically cleaned (e.g. "k   ara  chi" → "Karachi").  
+- Input field auto-clears after submitting a city name (so users don’t have to delete manually).  
+- Suggestions automatically close when clicking outside the input box.  
+
+
 - Experience a fully **responsive layout** across devices.  
 - See **hover and focus states** for all interactive elements.  
 - **Skeleton loaders for every main component**:
@@ -37,6 +42,10 @@ Users should be able to:
 - Custom **Not Found image** when a city is invalid. 
 - ⌨️ Keyboard navigation on search suggestions → arrow keys to move, Enter to select, Escape to dismiss. 
 - Reverse Geocoding (Use My Location) → detect and search weather based on the user’s current location.
+- Smart input handling: removed extra spaces in city names (normalized input), auto-cleared the search box after submission, and auto-closed suggestions when clicking outside for a smoother experience.  
+
+
+
 ---
 ### Screenshot
  
@@ -77,8 +86,13 @@ Users should be able to:
 - Using reverse geocoding to auto-detect the user’s location.
 
 - Applying debounce to optimize performance of search suggestions.
+- Implemented input normalization to handle edge cases (like multiple spaces in city names).  
+- Learned to auto-clear inputs after a  search to improve UX.  
+- Managed suggestion dropdown closing on outside clicks.  
+- Enhanced keyboard navigation on search suggestions (Arrow ↑ ↓, Enter, Escape).  
 
-- Implementing keyboard navigation (↑ ↓ Enter Escape) for search suggestion dropdown.
+
+
 ---
 ### Continued development
 - Add **geolocation support** (auto-detect user’s location).  

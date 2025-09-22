@@ -1,7 +1,4 @@
 
-
-
-
 import { useState, useEffect, useRef } from "react";
 import SearchInProgress from "./SearchInProgress";
 import SearchSuggestion from "./SearchSuggestion";
@@ -16,8 +13,8 @@ export default function SearchBar({ onSearch, searching }) {
   const debouncedCity = useDebounce(city, 500);
   const wrapperRef = useRef(null);
 
-  // normalize helper
-  const normalizeInput = (str) => str.replace(/\s+/g, " ").trim();
+  // normalize helper: remove all extra spaces
+  const normalizeInput = (str) => str.replace(/\s+/g, "").trim();
 
   // --- fetch suggestions ---
   useEffect(() => {
@@ -45,7 +42,7 @@ export default function SearchBar({ onSearch, searching }) {
           name: normalizeInput(r.name),
           country: r.country,
           admin1: r.admin1,
-          display: `${normalizeInput(r.name)}${r.admin1 ? ", " + r.admin1 : ""}${
+          display: `${r.name}${r.admin1 ? ", " + r.admin1 : ""}${
             r.country ? ", " + r.country : ""
           }`,
         }));
@@ -81,7 +78,7 @@ export default function SearchBar({ onSearch, searching }) {
     const normalized = normalizeInput(city);
     if (!normalized) return;
     onSearch(normalized);
-    setCity("");
+    setCity(""); // clear input
     setSuggestions([]);
     setActiveIndex(-1);
   };
@@ -90,7 +87,7 @@ export default function SearchBar({ onSearch, searching }) {
   const handleSelect = (s) => {
     const normalized = normalizeInput(s.name);
     onSearch(normalized);
-    setCity("");
+    setCity(""); // clear input
     setSuggestions([]);
     setActiveIndex(-1);
   };
@@ -124,7 +121,7 @@ export default function SearchBar({ onSearch, searching }) {
               type="text"
               placeholder="Search for a place..."
               value={city}
-              onChange={(e) => setCity(e.target.value)}
+              onChange={(e) => setCity(e.target.value)} // keep raw input
               onKeyDown={handleKeyDown}
               data-aos="fade-right"
             />
