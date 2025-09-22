@@ -95,7 +95,6 @@ Users should be able to:
 
 ---
 ### Continued development
-- Add **geolocation support** (auto-detect user’s location).  
 - Integrate **charts** for hourly and weekly data visualization.  
 - Build a **theme toggle** (dark/light).  
 - Cache API responses for **faster performance**.  
@@ -114,8 +113,13 @@ Users should be able to:
 ---
 
 ## Acknowledgments
-- Hackathon organizers for the challenge.  
-- OpenMeteo for free API data.  
-- Inspiration from modern weather app UI designs.  
-- ✨ Extra effort: Added **plus & bonus animations**, **scroll-based AOS animations**, and a **Not Found image** to improve UX.  
+🙏 Hackathon organizers for the challenge and motivation.
+
+🌍 OpenMeteo API for providing free and reliable weather data.
+
+⚛️ React + Vite and ✨ AOS for making development faster and smoother.
+
+📚 Open-source contributors & documentation writers whose guides helped me implement tricky features.
+
+💡 Inspiration from modern weather app UI designs for the clean look.
 ---
