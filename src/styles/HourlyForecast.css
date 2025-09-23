@@ -4,7 +4,7 @@
   flex-direction: column;
   gap: 0.6rem;
   height: 100%;
-  padding: 1rem;
+  padding: 1.33rem;
 }
 
 .hourly-forecast-top {
@@ -18,14 +18,12 @@
   min-height: 0;
   max-height: 100%;
   padding: 0;
-    padding: 0;
-  margin-inline: -16px; 
-  padding-inline: 16px;
-  scrollbar-width: thin;      
+  margin-inline: -22px;
+  padding-inline: 22px;
+  scrollbar-width: thin;
   scrollbar-color: var(--very-light-gray) var(--mid-blue);
 
 }
-
 
 .hourly-list::-webkit-scrollbar {
   width: 4px !important;
@@ -51,14 +49,21 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--light-blue) !important;
-  padding: 0.3rem 0.7rem;
+  padding: 0.2rem 0.8rem;
   border-radius: 8px;
   margin: 14px 0;
+  border: 1px solid var(--very-light-gray);
 }
 
 .hourly-icons {
   display: flex;
   align-items: center;
+}
+
+.hourly-icons .weather-icon {
+  width: 35px;
+  height: 35px;
+  margin: 0.5rem 0.2rem 0.5rem auto;
 }
 
 .hour-card span {
@@ -161,4 +166,3 @@
 .dropdown-icon.open {
   transform: rotate(180deg);
 }
-

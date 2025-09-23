@@ -30,7 +30,7 @@ h3 {
     "daily hourly";
   grid-template-columns: 2fr 1fr;
   grid-template-rows: auto auto auto auto minmax(0, 1fr);
-  gap: 1.2rem;
+    gap: 1.54rem;
   padding: 2rem;
   background-color: var(--dark-blue);
   min-height: 100vh;
@@ -74,8 +74,9 @@ li {
 
 .daily-forecast-section {
   grid-area: daily;
+   max-height:fit-content;
+   padding-bottom: 3.90rem;
 }
-
 .hourly-forecast-section {
   grid-area: hourly;
   background: var(--mid-blue);

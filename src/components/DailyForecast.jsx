@@ -8,7 +8,7 @@ function DailyForecast({ daily, units = {} }) {
 
   return (
     <section className="daily-forecast">
-      <h3>Daily Forecast</h3>
+      <h3>Daily forecast</h3>
 
       <ul className="forecast-list">
         {daily.time.map((date, idx) => {

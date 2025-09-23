@@ -30,7 +30,7 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay, units = {}
   return (
     <section className="hourly-forecast">
       <header className="hourly-forecast-top">
-        <h3>Hourly Forecast</h3>
+        <h3>Hourly forecast</h3>
 
         {/* Custom dropdown */}
         <nav className="day-dropdown" ref={dropdownRef} aria-label="Select forecast day">
@@ -92,7 +92,7 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay, units = {}
                   src={icon}
                   alt={`Weather condition code ${code}`}
                   className="weather-icon"
-                  style={{ width: "40px", height: "40px", margin: "0.5rem auto" }}
+                
                 />
                 <time dateTime={time}>
                   {new Date(time).toLocaleString("en-US", {

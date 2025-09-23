@@ -20,7 +20,13 @@
     gap: 1rem;
     padding: 1rem;
   }
+  .daily-forecast {
+  margin-top: 0.6rem;
+}
+.daily-forecast-section {
 
+   padding-bottom: 0.5rem;
+}
   .weather-stats {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -69,5 +75,13 @@
 
   .current-weather .current-temp {
     font-size: 4.55rem;
+  }
+  /* for stat cared and forecast card */
+  .forecast-card,.stat-card {
+    padding: 0.9rem;
+  }
+  /* for current weather section */
+  .current-weather-section{
+    padding: 0.22rem;
   }
 }
