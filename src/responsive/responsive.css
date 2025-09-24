@@ -20,13 +20,16 @@
     gap: 1rem;
     padding: 1rem;
   }
-  .daily-forecast {
-  margin-top: 0.6rem;
-}
-.daily-forecast-section {
 
-   padding-bottom: 0.5rem;
-}
+  .daily-forecast {
+    margin-top: 0.6rem;
+  }
+
+  .daily-forecast-section {
+
+    padding-bottom: 0.5rem;
+  }
+
   .weather-stats {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -53,7 +56,7 @@
 @media (max-width:700px) {
   .search-bar-form {
     flex-direction: column;
-    align-items:normal;
+    align-items: normal;
   }
 
   .search-bar-form button {
@@ -68,6 +71,15 @@
 
 /* For Current Weather  */
 @media (max-width:500px) {
+  .header {
+    align-items: normal;
+  }
+
+  .units-dropdown {
+    align-items: end;
+    flex-direction: column-reverse;
+  }
+
   .current-weather {
     flex-direction: column;
     gap: 1rem;
@@ -76,12 +88,16 @@
   .current-weather .current-temp {
     font-size: 4.55rem;
   }
+
   /* for stat cared and forecast card */
-  .forecast-card,.stat-card {
+  .forecast-card,
+  .stat-card {
     padding: 0.9rem;
   }
+
   /* for current weather section */
-  .current-weather-section{
+  .current-weather-section {
     padding: 0.22rem;
   }
+
 }
