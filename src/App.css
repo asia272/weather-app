@@ -7,8 +7,6 @@
 body {
   font-family: var(--font-body);
   font-size: var(--font-size-body);
-  background-color: var(--dark-blue);
-  color: var(--white);
 }
 
 
@@ -32,10 +30,10 @@ h3 {
   grid-template-rows: auto auto auto auto minmax(0, 1fr);
     gap: 1.54rem;
   padding: 2rem;
-  background-color: var(--dark-blue);
+
   min-height: 100vh;
   font-family: var(--font-body);
-  color: var(--white);
+  /* color: var(--white); */
 
 }
 

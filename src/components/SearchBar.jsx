@@ -1,9 +1,13 @@
-
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import SearchInProgress from "./SearchInProgress";
 import SearchSuggestion from "./SearchSuggestion";
 import "../styles/SearchBar.css";
+import { ThemeContext } from "../ThemeContext/ThemeContext";
+
+// Search icons
 import searchIcon from "../assets/images/icon-search.svg";
+import searchIconLight from "../assets/light-theme-images/icon-search.svg";
+
 import useDebounce from "../hooks/useDebounce";
 
 export default function SearchBar({ onSearch, searching }) {
@@ -12,6 +16,8 @@ export default function SearchBar({ onSearch, searching }) {
   const [activeIndex, setActiveIndex] = useState(-1);
   const debouncedCity = useDebounce(city, 500);
   const wrapperRef = useRef(null);
+
+  const { theme } = useContext(ThemeContext);
 
   // normalize helper: remove all extra spaces
   const normalizeInput = (str) => str.replace(/\s+/g, "").trim();
@@ -116,7 +122,12 @@ export default function SearchBar({ onSearch, searching }) {
       <form className="search-bar-form" onSubmit={handleSubmit} autoComplete="off">
         <div className="inputs" style={{ position: "relative" }}>
           <div className="input-box">
-            <img src={searchIcon} alt="search-icon" data-aos="fade-right" />
+            {/* Theme-aware search icon */}
+            {theme === "dark" ? (
+              <img src={searchIcon} alt="search-icon" data-aos="fade-right" />
+            ) : (
+              <img src={searchIconLight} alt="search-icon" data-aos="fade-right" />
+            )}
             <input
               type="text"
               placeholder="Search for a place..."

@@ -69,3 +69,80 @@
 
 
 }
+
+
+
+/* Base styles for theme switching */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  background-color: var(--dark-blue);
+  color: var(--white);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* When light theme is active */
+:root[data-theme="light"] body {
+  background-color: var(--white);
+  color: var(--dark-blue) !important;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  margin: 0;
+  color: inherit;
+}
+
+
+:root[data-theme="light"] {
+  /* Neutral Colors */
+  --neutral-900: hsl(0, 100%, 99%);
+  /* background white */
+  --neutral-800: hsl(330, 2%, 23%);
+  /* input bg / subtle gray */
+  --neutral-700: hsl(240, 5%, 87%);
+  /* card background (lavender) */
+  --neutral-600: hsl(275, 20%, 81%);
+  /* secondary text (gray-blue) */
+  --neutral-300: hsl(275, 24%, 90%);
+  /* heading / main text */
+  --neutral-200: hsl(300, 2%, 8%);
+  --neutral-0: hsl(0, 0%, 0%);
+
+
+  /* Semantic aliases */
+  --dark-blue: var(--neutral-0);
+  /* pure black text */
+  --mid-blue: var(--neutral-600);
+  /* heading text */
+  --light-blue: var(--neutral-300);
+  /* secondary text */
+  --very-light-gray: var(--neutral-700);
+  /* card background */
+  --gray: var(--neutral-800);
+  /* input / soft gray */
+  --white: var(--neutral-900);
+  /* page background */
+ --light-gray: var(--neutral-200);
+    /* Accent Colors (from screenshot) */
+    --orange-500: hsl(25, 95%, 53%);
+  /* vibrant orange (logo/accent) */
+  --blue-500: hsl(221, 83%, 53%);
+  /* bright blue (button) */
+  --purple-400: hsl(255, 85%, 92%);
+  /* soft lavender for big card bg */
+
+  /* Semantic aliases of accent colors */
+  --primary-orange: var(--orange-500);
+  --primary-blue: var(--blue-500);
+  --accent-purple: var(--purple-400);
+}

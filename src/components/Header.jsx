@@ -1,14 +1,28 @@
 
-
-
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { ThemeContext } from "../ThemeContext/ThemeContext";
 import "../styles/Header.css";
-import logo from "../assets/images/logo.svg";
+
+// Logos
+import darkThemelogo from "../assets/images/logo.svg";
+import lightThemeLogo from "../assets/light-theme-images/logo.svg";
+
+// Check icons
 import CheckIcon from "../assets/images/icon-checkmark.svg";
+import CheckIconLight from "../assets/light-theme-images/icon-checkmark.svg";
+
+// Unit icons
 import unitIcon from "../assets/images/icon-units.svg";
+import unitIconLight from "../assets/light-theme-images/icon-units.svg";
+
+// Dropdown icons
 import dropDownIcon from "../assets/images/icon-dropdown.svg";
+import dropDownIconLight from "../assets/light-theme-images/icon-dropdown.svg";
+
+import ThemeToggle from "./ThemeToggle";
 
 function Header({ units, setUnits }) {
+  const { theme } = useContext(ThemeContext);
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -34,7 +48,11 @@ function Header({ units, setUnits }) {
       {/* Logo */}
       <div className="logo" data-aos="zoom-in">
         <a href="/" aria-label="Weather App Home">
-          <img src={logo} alt="Weather app logo" />
+          {theme === "dark" ? (
+            <img src={darkThemelogo} alt="Dark logo" />
+          ) : (
+            <img src={lightThemeLogo} alt="Light logo" />
+          )}
         </a>
       </div>
 
@@ -45,19 +63,38 @@ function Header({ units, setUnits }) {
         ref={dropdownRef}
         aria-label="Units selection menu"
       >
+        {/* Theme Switcher */}
+        <ThemeToggle />
+
         <button
           className="units-btn"
           aria-haspopup="true"
           aria-expanded={open}
           onClick={() => setOpen(!open)}
         >
-          <img src={unitIcon} alt="Units icon" className="unit-icon" />
+          {/* Unit Icon */}
+          {theme === "dark" ? (
+            <img src={unitIcon} alt="Units icon" className="unit-icon" />
+          ) : (
+            <img src={unitIconLight} alt="Units icon" className="unit-icon" />
+          )}
+
           <span>Units</span>
-          <img
-            src={dropDownIcon}
-            alt="Dropdown arrow"
-            className={`dropdown-icon ${open ? "open" : ""}`}
-          />
+
+          {/* Dropdown Arrow */}
+          {theme === "dark" ? (
+            <img
+              src={dropDownIcon}
+              alt="Dropdown arrow"
+              className={`dropdown-icon ${open ? "open" : ""}`}
+            />
+          ) : (
+            <img
+              src={dropDownIconLight}
+              alt="Dropdown arrow"
+              className={`dropdown-icon ${open ? "open" : ""}`}
+            />
+          )}
         </button>
 
         {open && (
@@ -71,18 +108,40 @@ function Header({ units, setUnits }) {
                 onClick={() => handleChange("temperature", "C")}
               >
                 Celsius (°C)
-                {units.temperature === "C" && (
-                  <img src={CheckIcon} alt="Selected" className="check-icon" />
-                )}
+                {units.temperature === "C" &&
+                  (theme === "dark" ? (
+                    <img
+                      src={CheckIcon}
+                      alt="Selected"
+                      className="check-icon"
+                    />
+                  ) : (
+                    <img
+                      src={CheckIconLight}
+                      alt="Selected"
+                      className="check-icon"
+                    />
+                  ))}
               </button>
               <button
                 className={units.temperature === "F" ? "active" : ""}
                 onClick={() => handleChange("temperature", "F")}
               >
                 Fahrenheit (°F)
-                {units.temperature === "F" && (
-                  <img src={CheckIcon} alt="Selected" className="check-icon" />
-                )}
+                {units.temperature === "F" &&
+                  (theme === "dark" ? (
+                    <img
+                      src={CheckIcon}
+                      alt="Selected"
+                      className="check-icon"
+                    />
+                  ) : (
+                    <img
+                      src={CheckIconLight}
+                      alt="Selected"
+                      className="check-icon"
+                    />
+                  ))}
               </button>
             </li>
 
@@ -94,18 +153,40 @@ function Header({ units, setUnits }) {
                 onClick={() => handleChange("windspeed", "km/h")}
               >
                 km/h
-                {units.windspeed === "km/h" && (
-                  <img src={CheckIcon} alt="Selected" className="check-icon" />
-                )}
+                {units.windspeed === "km/h" &&
+                  (theme === "dark" ? (
+                    <img
+                      src={CheckIcon}
+                      alt="Selected"
+                      className="check-icon"
+                    />
+                  ) : (
+                    <img
+                      src={CheckIconLight}
+                      alt="Selected"
+                      className="check-icon"
+                    />
+                  ))}
               </button>
               <button
                 className={units.windspeed === "mph" ? "active" : ""}
                 onClick={() => handleChange("windspeed", "mph")}
               >
                 mph
-                {units.windspeed === "mph" && (
-                  <img src={CheckIcon} alt="Selected" className="check-icon" />
-                )}
+                {units.windspeed === "mph" &&
+                  (theme === "dark" ? (
+                    <img
+                      src={CheckIcon}
+                      alt="Selected"
+                      className="check-icon"
+                    />
+                  ) : (
+                    <img
+                      src={CheckIconLight}
+                      alt="Selected"
+                      className="check-icon"
+                    />
+                  ))}
               </button>
             </li>
 
@@ -117,18 +198,40 @@ function Header({ units, setUnits }) {
                 onClick={() => handleChange("precipitation", "mm")}
               >
                 Millimeters (mm)
-                {units.precipitation === "mm" && (
-                  <img src={CheckIcon} alt="Selected" className="check-icon" />
-                )}
+                {units.precipitation === "mm" &&
+                  (theme === "dark" ? (
+                    <img
+                      src={CheckIcon}
+                      alt="Selected"
+                      className="check-icon"
+                    />
+                  ) : (
+                    <img
+                      src={CheckIconLight}
+                      alt="Selected"
+                      className="check-icon"
+                    />
+                  ))}
               </button>
               <button
                 className={units.precipitation === "in" ? "active" : ""}
                 onClick={() => handleChange("precipitation", "in")}
               >
                 Inches (in)
-                {units.precipitation === "in" && (
-                  <img src={CheckIcon} alt="Selected" className="check-icon" />
-                )}
+                {units.precipitation === "in" &&
+                  (theme === "dark" ? (
+                    <img
+                      src={CheckIcon}
+                      alt="Selected"
+                      className="check-icon"
+                    />
+                  ) : (
+                    <img
+                      src={CheckIconLight}
+                      alt="Selected"
+                      className="check-icon"
+                    />
+                  ))}
               </button>
             </li>
           </ul>

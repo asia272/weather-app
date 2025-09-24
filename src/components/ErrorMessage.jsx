@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { ThemeContext } from "../ThemeContext/ThemeContext";
 import "../styles/ErrorMessage.css";
-import erroImg from "../assets/images/icon-error.svg";
+
+import errorImg from "../assets/images/icon-error.svg";
+import errorImgLight from "../assets/light-theme-images/icon-error.svg";
+
 import retryIcon from "../assets/images/icon-retry.svg";
+import retryIconLight from "../assets/light-theme-images/icon-retry.svg";
+
+
 
 function ErrorMessage({ message, onRetry }) {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <section className="error-container" role="alert">
+    <section className="error-container" role="alert" data-aos="zoom-in">
       <article className="error-message">
         <figure className="error-icon">
-          <img src={erroImg} alt="Error icon" />
+
+          {theme === "dark" ? (
+            <img src={errorImg} alt="error-icon" />
+          ) : (
+            <img src={errorImgLight} alt="error-icon" />
+          )}
+
         </figure>
 
         <header>
@@ -21,7 +37,11 @@ function ErrorMessage({ message, onRetry }) {
         </p>
 
         <button className="retry-btn" onClick={onRetry}>
-          <img src={retryIcon} alt="Retry icon" />
+          {theme === "dark" ? (
+            <img src={retryIcon} alt="retry-icon" />
+          ) : (
+            <img src={retryIconLight} alt="retry-icon" />
+          )}
           Retry
         </button>
       </article>

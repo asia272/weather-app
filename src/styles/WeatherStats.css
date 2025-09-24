@@ -11,7 +11,8 @@
   padding: 1.2rem;
   border-radius: 10px;
 border: 1px solid var(--very-light-gray);
-  color: var(--white);
+
+  color: inherit;
 }
 
 .stat-card h4 {

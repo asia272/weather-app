@@ -11,7 +11,7 @@
 .error-message {
   max-width: 400px;
   text-align: center;
-  color: var(--white);
+  /* color: var(--white); */
 
   font-family: var(--font-body);
 }
@@ -35,7 +35,8 @@
   font-weight: 700;
   margin-bottom: 0.75rem;
   font-family: var(--font-heading);
-  color: var(--white);
+  /* color: var(--white); */
+  color: inherit;
 }
 
 .error-message p {
@@ -49,7 +50,7 @@
 .retry-btn {
   padding: 0.6rem 1.2rem;
   background-color: var(--mid-blue);
-  color: var(--white);
+  /* color: var(--white); */
   font-size: 1rem;
   font-weight: 500;
   border: none;
@@ -60,6 +61,7 @@
   align-items: center;
   gap: 0.4rem;
   font-family: var(--font-body);
+color: inherit;
 }
 
 .retry-btn:hover {

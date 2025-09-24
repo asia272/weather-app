@@ -5,7 +5,7 @@
 }
 
 .search-bar h1 {
-  font-size: 1.9rem;
+  font-size: 2.9rem;
   margin-bottom: 3rem;
   font-family: var(--font-heading);
 }
@@ -23,7 +23,7 @@
   padding: 0.9rem 1.2rem 0.9rem 3.55rem;
   border-radius: 12px;
   background: var(--light-blue);
-  color: var(--white);
+  color: inherit;
   font-size: 1rem;
   outline: 2px solid transparent;
   border: 3px solid transparent;
