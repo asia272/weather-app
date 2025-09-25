@@ -4,7 +4,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: var(--mid-blue);
+  background: var(--color-surface);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   border-radius: 0.6rem;
   margin-top: 0.6rem;
@@ -31,8 +31,8 @@
 
 .suggestions-dropdown li:hover,
 .suggestions-dropdown li.active {
-  background: var(--light-blue);
-  border-color: var(--very-light-gray);
+  background:var(--color-surface-alt);
+  border-color: var(--color-border);
 }
 
 /* Clear button inside input */
@@ -41,6 +41,6 @@
   border: none;
   cursor: pointer;
   margin-left: 0.6rem;
-  color: var(--white);
+  color: var(--color-text-primary);
   font-size: 1rem;
 }

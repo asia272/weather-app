@@ -30,7 +30,7 @@
 
 .current-date {
   margin: 1rem 0;
-  color: var(--light-gray);
+  color: var(--color-placeholder);
 }
 .current-temp{
   font-size: 3.55rem;

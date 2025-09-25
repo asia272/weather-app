@@ -18,7 +18,7 @@
 
 .forecast-card {
   flex: 1;
-  background: var(--light-blue);
+  background: var(--color-surface-alt);
   padding: 1rem;
   border-radius: 10px;
   text-align: center;
@@ -26,7 +26,7 @@
   transition: all 0.2s ease;
   flex-wrap: wrap;
   border: none;
-  border: 1px solid var(--very-light-gray);
+  border: 1px solid var(--color-border);
 }
 
 .daily-temp {

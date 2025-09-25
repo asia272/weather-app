@@ -23,9 +23,43 @@
   font-style: normal;
 }
 
+
+
+
+
+/* Base styles for theme switching */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  margin: 0;
+  color: inherit;
+}
+
 /* ---- CSS Variables ---- */
+
+
+
+
 :root {
-  /* Neutral Colors */
+  /* Neutral palette */
   --neutral-900: hsl(243, 96%, 9%);
   --neutral-800: hsl(243, 27%, 20%);
   --neutral-700: hsl(243, 23%, 24%);
@@ -34,24 +68,27 @@
   --neutral-200: hsl(250, 6%, 84%);
   --neutral-0: hsl(0, 0%, 100%);
 
-  /* Semantic aliases of natural colors*/
-  --dark-blue: var(--neutral-900);
-  --mid-blue: var(--neutral-800);
-  --light-blue: var(--neutral-700);
-  --very-light-gray: var(--neutral-600);
-  --gray: var(--neutral-300);
-  --light-gray: var(--neutral-200);
-  --white: var(--neutral-0);
+  /* Semantic system */
+  --color-bg: var(--neutral-900);
+  --color-surface: var(--neutral-800);
+  --color-surface-alt: var(--neutral-700);
+  --color-border: var(--neutral-600);
+  --color-text-secondary: var(--neutral-300);
+  --color-placeholder: var(--neutral-200);
+  --color-text-primary: var(--neutral-0);
 
   /* Accent Colors */
   --orange-500: hsl(28, 100%, 52%);
   --blue-500: hsl(233, 67%, 56%);
   --blue-700: hsl(248, 70%, 36%);
 
-  /* Semantic aliases of assent colors */
-  --primary-orange: var(--orange-500);
-  --primary-blue: var(--blue-500);
-  --dark-blue-accent: var(--blue-700);
+  /* Semantic Accent Aliases */
+  --color-primary: var(--blue-500);
+  /* old --primary-blue */
+  --color-accent: var(--orange-500);
+  /* old --primary-orange */
+  --color-accent-strong: var(--blue-700);
+
 
   /* Typography */
   --font-body: "DM Sans", sans-serif;
@@ -66,83 +103,33 @@
   --z-card: 10;
   --z-dropdown: 100;
   --z-modal: 1000;
-
-
 }
-
-
-
-/* Base styles for theme switching */
-html,
-body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-body);
-  font-size: var(--font-size-body);
-  background-color: var(--dark-blue);
-  color: var(--white);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* When light theme is active */
-:root[data-theme="light"] body {
-  background-color: var(--white);
-  color: var(--dark-blue) !important;
-}
-
-/* Headings */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-  margin: 0;
-  color: inherit;
-}
-
 
 :root[data-theme="light"] {
-  /* Neutral Colors */
   --neutral-900: hsl(0, 100%, 99%);
-  /* background white */
   --neutral-800: hsl(330, 2%, 23%);
-  /* input bg / subtle gray */
   --neutral-700: hsl(240, 5%, 87%);
-  /* card background (lavender) */
   --neutral-600: hsl(275, 20%, 81%);
-  /* secondary text (gray-blue) */
   --neutral-300: hsl(275, 24%, 90%);
-  /* heading / main text */
   --neutral-200: hsl(300, 2%, 8%);
   --neutral-0: hsl(0, 0%, 0%);
 
+  --color-bg: var(--neutral-900);
+  --color-surface: var(--neutral-600);
+  --color-surface-alt: var(--neutral-300);
+  --color-border: var(--neutral-700);
+  --color-text-secondary: var(--neutral-800);
+  --color-placeholder: var(--neutral-200);
+  --color-text-primary: var(--neutral-0);
 
-  /* Semantic aliases */
-  --dark-blue: var(--neutral-0);
-  /* pure black text */
-  --mid-blue: var(--neutral-600);
-  /* heading text */
-  --light-blue: var(--neutral-300);
-  /* secondary text */
-  --very-light-gray: var(--neutral-700);
-  /* card background */
-  --gray: var(--neutral-800);
-  /* input / soft gray */
-  --white: var(--neutral-900);
-  /* page background */
- --light-gray: var(--neutral-200);
-    /* Accent Colors (from screenshot) */
-    --orange-500: hsl(25, 95%, 53%);
-  /* vibrant orange (logo/accent) */
+
+  /* Accent Colors */
+  --orange-500: hsl(25, 95%, 53%);
   --blue-500: hsl(221, 83%, 53%);
-  /* bright blue (button) */
   --purple-400: hsl(255, 85%, 92%);
-  /* soft lavender for big card bg */
 
-  /* Semantic aliases of accent colors */
-  --primary-orange: var(--orange-500);
-  --primary-blue: var(--blue-500);
-  --accent-purple: var(--purple-400);
+  /* Semantic Accent Aliases */
+  --color-primary: var(--blue-500);
+  --color-accent: var(--orange-500);
+  --color-accent-alt: var(--purple-400);
 }

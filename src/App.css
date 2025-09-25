@@ -33,7 +33,7 @@ h3 {
 
   min-height: 100vh;
   font-family: var(--font-body);
-  /* color: var(--white); */
+color: inherit;
 
 }
 
@@ -77,6 +77,6 @@ li {
 }
 .hourly-forecast-section {
   grid-area: hourly;
-  background: var(--mid-blue);
+  background: var(--color-surface);
   max-height: 700px;
 }
