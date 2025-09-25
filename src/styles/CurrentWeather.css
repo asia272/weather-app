@@ -2,11 +2,19 @@
   display: flex;
   align-items: center;
   min-height: 280px;        
-  background: url("../assets/images/bg-today-large.svg") no-repeat center;
-  background-size: cover;  
+  background: url("../assets/images/bg-today-large.svg") no-repeat bottom/cover;
+  background-blend-mode: screen;
   border-radius: 12px;
   padding: 2rem;
   position: relative;
+}
+.current-weather-section.light {
+  background-color: #4338ca; /* bg-indigo-700 */
+}
+
+.current-weather-section.dark {
+  background-color: #1d4ed8; /* bg-blue-700 */
+  background-blend-mode: normal;
 }
 
 .current-weather {
@@ -26,15 +34,17 @@
 .current-weather h2 {
   font-size: 1.4rem;
   margin-bottom: 0.6rem;
+  color: white !important;
 }
 
 .current-date {
   margin: 1rem 0;
-  color: var(--color-placeholder);
+  color: white !important;
 }
 .current-temp{
   font-size: 3.55rem;
   font-weight: 500;
+  color: white;
 }
 .current-weather img {
   width: 80px;

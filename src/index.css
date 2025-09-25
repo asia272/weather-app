@@ -76,7 +76,7 @@ h6 {
   --color-text-secondary: var(--neutral-300);
   --color-placeholder: var(--neutral-200);
   --color-text-primary: var(--neutral-0);
-
+  --color-hover: var(--color-border);
   /* Accent Colors */
   --orange-500: hsl(28, 100%, 52%);
   --blue-500: hsl(233, 67%, 56%);
@@ -108,11 +108,13 @@ h6 {
 :root[data-theme="light"] {
   --neutral-900: hsl(0, 100%, 99%);
   --neutral-800: hsl(330, 2%, 23%);
-  --neutral-700: hsl(240, 5%, 87%);
-  --neutral-600: hsl(275, 20%, 81%);
-  --neutral-300: hsl(275, 24%, 90%);
+  --neutral-700: hsl(240, 37%, 89%);
+  --neutral-600: hsl(227, 75%, 89%);
+  --neutral--400: hsl(230, 58%, 76%);
+  --neutral-300: hsl(227, 45%, 83%);
   --neutral-200: hsl(300, 2%, 8%);
-  --neutral-0: hsl(0, 0%, 0%);
+  --neutral-0: hsl(245, 50%, 20%);
+
 
   --color-bg: var(--neutral-900);
   --color-surface: var(--neutral-600);
@@ -121,12 +123,12 @@ h6 {
   --color-text-secondary: var(--neutral-800);
   --color-placeholder: var(--neutral-200);
   --color-text-primary: var(--neutral-0);
-
-
+  --color-hover: var(--neutral--400);
   /* Accent Colors */
   --orange-500: hsl(25, 95%, 53%);
-  --blue-500: hsl(221, 83%, 53%);
-  --purple-400: hsl(255, 85%, 92%);
+  --color-accent-strong: hsl(233, 67%, 56%);
+  --blue-500: hsl(248, 70%, 36%);
+  --purple-400: hwb(255 85% 1%);
 
   /* Semantic Accent Aliases */
   --color-primary: var(--blue-500);

@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { ThemeContext } from "./ThemeContext/ThemeContext"; 
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import CurrentWeather from "./components/CurrentWeather";
@@ -36,7 +37,7 @@ export default function App() {
     handleSearch,
     handleRetry,
   } = useWeather("Berlin");
-
+  const { theme } = useContext(ThemeContext);
   useEffect(() => {
     AOS.init({ duration: 800, easing: "ease-in-out", once: true, mirror: false });
   }, []);
@@ -70,14 +71,14 @@ export default function App() {
 
           {loading && !weather ? (
             <>
-              <article className="current-weather-section"><HeroSkeleton /></article>
+              <article   className={`current-weather-section ${theme}`}><HeroSkeleton /></article>
               <article className="weather-stats-section"><VarsSkeleton /></article>
               <article className="daily-forecast-section"><DailySkeleton /></article>
               <article className="hourly-forecast-section"><HourlySkeleton /></article>
             </>
           ) : weather ? (
             <>
-              <article className="current-weather-section">
+         <article className={`current-weather-section ${theme}`}>
                 <CurrentWeather data={weather} units={units} />
               </article>
               <article className="weather-stats-section">
