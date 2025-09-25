@@ -3,13 +3,14 @@ import { ThemeContext } from "../ThemeContext/ThemeContext.jsx"; // ✅ import y
 import sunIcon from "../assets/images/sun.svg";   
 import moonIcon from "../assets/light-theme-images/moon.svg";
 import "../styles/ThemeToggle.css";
-
+import "../styles/Tooltip.css";
 function ThemeToggle() {
 
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <button
+    <div className="tooltip">
+       <button
       className="theme-toggle-btn"
       onClick={toggleTheme} 
       aria-label="Toggle theme"
@@ -20,6 +21,10 @@ function ThemeToggle() {
         <img src={moonIcon} alt="Switch to dark theme" />
       )}
     </button>
+    <span className="tooltip-text">Toggle theme</span>
+
+    </div>
+   
   );
 }
 
