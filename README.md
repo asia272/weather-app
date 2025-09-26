@@ -21,9 +21,12 @@ Users should be able to:
 - Switch between **Celsius/Fahrenheit**, **km/h–mph**, and **mm–inches** using the dropdown. 
 - Navigate search suggestions using keyboard controls (↑ ↓ Enter Escape).
 - Search suggestions are **normalized** → extra spaces inside city names are automatically cleaned (e.g. "k   ara  chi" → "Karachi").  
-- Input field auto-clears after submitting a city name (so users don’t have to delete manually).  
+- Input field auto-clears after submitting a city name (so users don’t have to delete manually). 
+- Voice search → start/stop voice input with microphone button, including tooltips and permission handling. 
 - Suggestions automatically close when clicking outside the input box.  
-
+- Theme switching → users can toggle between dark and light themes with smooth transitions.
+- Custom tooltip support → tooltips for interactive elements like theme toggle and voice search.
+- Theme-based icons → search, microphone, dropdown, and checkmark icons change according to the current theme.
 
 - Experience a fully **responsive layout** across devices.  
 - See **hover and focus states** for all interactive elements.  
@@ -37,6 +40,9 @@ Users should be able to:
 ---
 
 **Personal Touch & Enhancements**:  
+- Custom tooltip support 
+- Theme toggle with dynamic icons and tooltip guidance.
+- Voice search → start/stop voice input with microphone button, including tooltips and permission handling.
 - Added **plus & bonus animations** for all loading states.  
 - Implemented **scroll-based animations (AOS)** for cards and sections.  
 - Custom **Not Found image** when a city is invalid. 
@@ -72,7 +78,9 @@ Users should be able to:
 🔄 Reverse Geocoding API to convert latitude/longitude → city name
 
 ⌨️ Keyboard navigation support for better UX in search suggestions
+🗣️ Voice search integration with dynamic tooltips and permission handling
 
+🌗 Theme toggle with icons and tooltips
 
 ### What I learned
 - Handling **API data fetching** (OpenMeteo).  
@@ -90,7 +98,9 @@ Users should be able to:
 - Learned to auto-clear inputs after a  search to improve UX.  
 - Managed suggestion dropdown closing on outside clicks.  
 - Enhanced keyboard navigation on search suggestions (Arrow ↑ ↓, Enter, Escape).  
+- Voice search implementation using Web Speech API with dynamic tooltip guidance.
 
+- Theme switching with dynamic icons and tooltip descriptions.
 
 
 ---
