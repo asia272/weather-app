@@ -44,7 +44,10 @@
   font-weight: 500;
   font-size: 18px;
 }
+.units-btn:hover {
+  background: var(--color-surface-alt);
 
+}
 
 /* Dropdown Panel */
 .dropdown-menu {
@@ -133,4 +136,11 @@
 .dropdown-section:last-child {
   margin-bottom: 0;
   border-bottom: none;
+}
+.box-icons{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+gap: 1rem;
+  /* background-color: red; */
 }

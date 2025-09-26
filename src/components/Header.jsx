@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { ThemeContext } from "../ThemeContext/ThemeContext";
 import "../styles/Header.css";
-
+import "../styles/Favorites.css";
 // Logos
 import darkThemelogo from "../assets/images/logo.svg";
 import lightThemeLogo from "../assets/light-theme-images/logo.svg";
@@ -19,9 +19,14 @@ import unitIconLight from "../assets/light-theme-images/icon-units.svg";
 import dropDownIcon from "../assets/images/icon-dropdown.svg";
 import dropDownIconLight from "../assets/light-theme-images/icon-dropdown.svg";
 
+
+
+import FavoritesDropdown from "./FavoritesDropdown";
 import ThemeToggle from "./ThemeToggle";
 
-function Header({ units, setUnits }) {
+
+
+function Header({ units, setUnits, favorites, onFavoriteSelect, onRemoveFavorite }) {
   const { theme } = useContext(ThemeContext);
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -63,8 +68,18 @@ function Header({ units, setUnits }) {
         ref={dropdownRef}
         aria-label="Units selection menu"
       >
-        {/* Theme Switcher */}
-        <ThemeToggle />
+        <div className="box-icons">
+          {/* Theme Switcher */}
+          <ThemeToggle />
+          {/* Favorites Dropdown */}
+          <FavoritesDropdown
+            favorites={favorites}
+            onFavoriteSelect={onFavoriteSelect}
+            onRemoveFavorite={onRemoveFavorite}
+          />
+
+        </div>
+
 
         <button
           className="units-btn"
@@ -190,6 +205,9 @@ function Header({ units, setUnits }) {
           </ul>
         )}
       </nav>
+
+
+
     </header>
   );
 }

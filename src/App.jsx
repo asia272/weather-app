@@ -1,5 +1,5 @@
 import { useEffect, useContext } from "react";
-import { ThemeContext } from "./ThemeContext/ThemeContext"; 
+import { ThemeContext } from "./ThemeContext/ThemeContext";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import CurrentWeather from "./components/CurrentWeather";
@@ -36,6 +36,9 @@ export default function App() {
     setSelectedDay,
     handleSearch,
     handleRetry,
+    favorites,
+    addFavorite,
+    removeFavorite,
   } = useWeather("Berlin");
   const { theme } = useContext(ThemeContext);
   useEffect(() => {
@@ -46,7 +49,13 @@ export default function App() {
     <div className="app-container">
       {/* Header */}
       <header className="header-section">
-        <Header units={units} setUnits={setUnits} />
+        <Header
+          units={units}
+          setUnits={setUnits}
+          favorites={favorites}
+          onFavoriteSelect={handleSearch}
+          onRemoveFavorite={removeFavorite}
+        />
       </header>
 
       {/* Search Bar */}
@@ -71,15 +80,19 @@ export default function App() {
 
           {loading && !weather ? (
             <>
-              <article   className={`current-weather-section ${theme}`}><HeroSkeleton /></article>
+              <article className={`current-weather-section ${theme}`}><HeroSkeleton /></article>
               <article className="weather-stats-section"><VarsSkeleton /></article>
               <article className="daily-forecast-section"><DailySkeleton /></article>
               <article className="hourly-forecast-section"><HourlySkeleton /></article>
             </>
           ) : weather ? (
             <>
-         <article className={`current-weather-section ${theme}`}>
-                <CurrentWeather data={weather} units={units} />
+              <article className={`current-weather-section ${theme}`}>
+                <CurrentWeather data={weather}
+                  units={units}
+                  onRemoveFavorite={removeFavorite}
+                  onAddFavorite={() => addFavorite(weather.city, weather.country)}
+                  favorites={favorites} />
               </article>
               <article className="weather-stats-section">
                 <WeatherStats data={weather.current} units={units} />
