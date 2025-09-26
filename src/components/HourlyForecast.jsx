@@ -87,7 +87,7 @@ function HourlyForecast({ hourly, daily, selectedDay, setSelectedDay, units = {}
       <ul className="hourly-list">
         {hourly.time.slice(start, end).map((time, idx) => {
           const code = hourly.weathercode[start + idx];
-          const icon = getWeatherIcon(code); // already picks correct image
+          const icon = getWeatherIcon(code); 
 
           const temp = convertTemperature(
             hourly.temperature_2m[start + idx],
