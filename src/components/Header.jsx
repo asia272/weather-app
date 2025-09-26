@@ -48,11 +48,11 @@ function Header({ units, setUnits }) {
       {/* Logo */}
       <div className="logo" data-aos="zoom-in">
         <a href="/" aria-label="Weather App Home">
-          {theme === "dark" ? (
-            <img src={darkThemelogo} alt="Dark logo" />
-          ) : (
-            <img src={lightThemeLogo} alt="Light logo" />
-          )}
+          <img
+            src={theme === "dark" ? darkThemelogo : lightThemeLogo}
+            alt={theme === "dark" ? "Dark logo" : "Light logo"}
+          />
+
         </a>
       </div>
 
@@ -73,28 +73,22 @@ function Header({ units, setUnits }) {
           onClick={() => setOpen(!open)}
         >
           {/* Unit Icon */}
-          {theme === "dark" ? (
-            <img src={unitIcon} alt="Units icon" className="unit-icon" />
-          ) : (
-            <img src={unitIconLight} alt="Units icon" className="unit-icon" />
-          )}
+          <img
+            src={theme === "dark" ? unitIcon : unitIconLight}
+            alt="Units icon"
+            className="unit-icon"
+          />
+
 
           <span>Units</span>
 
           {/* Dropdown Arrow */}
-          {theme === "dark" ? (
-            <img
-              src={dropDownIcon}
-              alt="Dropdown arrow"
-              className={`dropdown-icon ${open ? "open" : ""}`}
-            />
-          ) : (
-            <img
-              src={dropDownIconLight}
-              alt="Dropdown arrow"
-              className={`dropdown-icon ${open ? "open" : ""}`}
-            />
-          )}
+          <img
+            src={theme === "dark" ? dropDownIcon : dropDownIconLight}
+            alt="Dropdown arrow"
+            className={`dropdown-icon ${open ? "open" : ""}`}
+          />
+
         </button>
 
         {open && (
@@ -109,19 +103,13 @@ function Header({ units, setUnits }) {
               >
                 Celsius (°C)
                 {units.temperature === "C" &&
-                  (theme === "dark" ? (
-                    <img
-                      src={CheckIcon}
-                      alt="Selected"
-                      className="check-icon"
-                    />
-                  ) : (
-                    <img
-                      src={CheckIconLight}
-                      alt="Selected"
-                      className="check-icon"
-                    />
-                  ))}
+                  <img
+                    src={theme === "dark" ? CheckIcon : CheckIconLight}
+                    alt="Selected"
+                    className="check-icon"
+                  />
+
+                }
               </button>
               <button
                 className={units.temperature === "F" ? "active" : ""}
@@ -129,19 +117,12 @@ function Header({ units, setUnits }) {
               >
                 Fahrenheit (°F)
                 {units.temperature === "F" &&
-                  (theme === "dark" ? (
-                    <img
-                      src={CheckIcon}
-                      alt="Selected"
-                      className="check-icon"
-                    />
-                  ) : (
-                    <img
-                      src={CheckIconLight}
-                      alt="Selected"
-                      className="check-icon"
-                    />
-                  ))}
+                  <img
+                    src={theme === "dark" ? CheckIcon : CheckIconLight}
+                    alt="Selected"
+                    className="check-icon"
+                  />
+                }
               </button>
             </li>
 
@@ -154,19 +135,12 @@ function Header({ units, setUnits }) {
               >
                 km/h
                 {units.windspeed === "km/h" &&
-                  (theme === "dark" ? (
-                    <img
-                      src={CheckIcon}
-                      alt="Selected"
-                      className="check-icon"
-                    />
-                  ) : (
-                    <img
-                      src={CheckIconLight}
-                      alt="Selected"
-                      className="check-icon"
-                    />
-                  ))}
+                  <img
+                    src={theme === "dark" ? CheckIcon : CheckIconLight}
+                    alt="Selected"
+                    className="check-icon"
+                  />
+                }
               </button>
               <button
                 className={units.windspeed === "mph" ? "active" : ""}
@@ -174,19 +148,12 @@ function Header({ units, setUnits }) {
               >
                 mph
                 {units.windspeed === "mph" &&
-                  (theme === "dark" ? (
-                    <img
-                      src={CheckIcon}
-                      alt="Selected"
-                      className="check-icon"
-                    />
-                  ) : (
-                    <img
-                      src={CheckIconLight}
-                      alt="Selected"
-                      className="check-icon"
-                    />
-                  ))}
+                  <img
+                    src={theme === "dark" ? CheckIcon : CheckIconLight}
+                    alt="Selected"
+                    className="check-icon"
+                  />
+                }
               </button>
             </li>
 
@@ -199,19 +166,12 @@ function Header({ units, setUnits }) {
               >
                 Millimeters (mm)
                 {units.precipitation === "mm" &&
-                  (theme === "dark" ? (
-                    <img
-                      src={CheckIcon}
-                      alt="Selected"
-                      className="check-icon"
-                    />
-                  ) : (
-                    <img
-                      src={CheckIconLight}
-                      alt="Selected"
-                      className="check-icon"
-                    />
-                  ))}
+                  <img
+                    src={theme === "dark" ? CheckIcon : CheckIconLight}
+                    alt="Selected"
+                    className="check-icon"
+                  />
+                }
               </button>
               <button
                 className={units.precipitation === "in" ? "active" : ""}
@@ -219,19 +179,12 @@ function Header({ units, setUnits }) {
               >
                 Inches (in)
                 {units.precipitation === "in" &&
-                  (theme === "dark" ? (
-                    <img
-                      src={CheckIcon}
-                      alt="Selected"
-                      className="check-icon"
-                    />
-                  ) : (
-                    <img
-                      src={CheckIconLight}
-                      alt="Selected"
-                      className="check-icon"
-                    />
-                  ))}
+                  <img
+                    src={theme === "dark" ? CheckIcon : CheckIconLight}
+                    alt="Selected"
+                    className="check-icon"
+                  />
+                }
               </button>
             </li>
           </ul>
