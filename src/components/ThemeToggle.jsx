@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ThemeContext } from "../ThemeContext/ThemeContext.jsx"; // ✅ import your context
-import sunIcon from "../assets/images/sun.svg";   
+import sunIcon from "../assets/images/sun.svg";
 import moonIcon from "../assets/light-theme-images/moon.svg";
 import "../styles/ThemeToggle.css";
 import "../styles/Tooltip.css";
@@ -10,21 +10,23 @@ function ThemeToggle() {
 
   return (
     <div className="tooltip">
-       <button
-      className="theme-toggle-btn"
-      onClick={toggleTheme} 
-      aria-label="Toggle theme"
-    >
-      {theme === "dark" ? (
-        <img src={sunIcon} alt="Switch to light theme" />
-      ) : (
-        <img src={moonIcon} alt="Switch to dark theme" />
-      )}
-    </button>
-    <span className="tooltip-text">Toggle theme</span>
+      <button
+        className="theme-toggle-btn"
+        onClick={toggleTheme}
+        aria-label="Toggle theme"
+      >
+        <img
+          src={theme === "dark" ? sunIcon : moonIcon}
+          alt={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+        />
+
+      </button>
+      <span className="tooltip-text">
+        {theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      </span>
 
     </div>
-   
+
   );
 }
 
