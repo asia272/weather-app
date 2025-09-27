@@ -44,6 +44,7 @@
   transition: 0.2s;
   font-weight: 500;
   font-size: 18px;
+
 }
 .units-btn:hover {
   background: var(--color-surface-alt);
@@ -60,7 +61,6 @@
   border-radius: 10px;
   padding: 9px;
   width: 220px;
-  z-index: var(--z-dropdown);
   width: 13.5rem;
   z-index: 9999;
 }
