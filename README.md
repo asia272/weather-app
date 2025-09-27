@@ -27,6 +27,8 @@ Users should be able to:
 - Theme switching → users can toggle between dark and light themes with smooth transitions.
 - Custom tooltip support → tooltips for interactive elements like theme toggle and voice search.
 - Theme-based icons → search, microphone, dropdown, and checkmark icons change according to the current theme.
+- Favorites feature → save/remove favorite cities with a dropdown, live count badge, and quick selection.
+-Toast notifications → error & status messages (invalid city, denied location permission, etc.).
 
 - Experience a fully **responsive layout** across devices.  
 - See **hover and focus states** for all interactive elements.  
@@ -49,7 +51,8 @@ Users should be able to:
 - ⌨️ Keyboard navigation on search suggestions → arrow keys to move, Enter to select, Escape to dismiss. 
 - Reverse Geocoding (Use My Location) → detect and search weather based on the user’s current location.
 - Smart input handling: removed extra spaces in city names (normalized input), auto-cleared the search box after submission, and auto-closed suggestions when clicking outside for a smoother experience.  
-
+- Added toast notifications for errors and status feedback.
+- Favorites system with live badge count
 
 
 ---
@@ -69,7 +72,7 @@ Users should be able to:
 - 🎨 CSS (variables, flexbox, grid) – responsive styling  
 - 🌍 [OpenMeteo API](https://open-meteo.com/) – free real-time weather data  
 - ✨ [AOS](https://michalsnik.github.io/aos/) – smooth scroll animations  
-
+- [React Toastify](https://fkhadra.github.io/react-toastify/introduction)– for easy, customizable toast notifications (used for errors & status messages) 
 - 🖼️ Custom **Not Found image** for error handling  
 - 🔤 Fonts: **DM Sans** & **Bricolage Grotesque**  
 - 🟢 **Plus & bonus animations** for loading states 
@@ -81,6 +84,9 @@ Users should be able to:
 🗣️ Voice search integration with dynamic tooltips and permission handling
 
 🌗 Theme toggle with icons and tooltips
+⭐ Favorites dropdown with count badge
+
+🔔 Toast notifications for error/status messages
 
 ### What I learned
 - Handling **API data fetching** (OpenMeteo).  
@@ -101,8 +107,8 @@ Users should be able to:
 - Voice search implementation using Web Speech API with dynamic tooltip guidance.
 
 - Theme switching with dynamic icons and tooltip descriptions.
-
-
+- Toast notifications for real-time feedback.
+- Favorites system for saving frequently checked cities.
 ---
 ### Continued development
 - Integrate **charts** for hourly and weekly data visualization.  
