@@ -112,7 +112,6 @@ Users should be able to:
 ---
 ### Continued development
 - Integrate **charts** for hourly and weekly data visualization.  
-- Build a **theme toggle** (dark/light).  
 - Cache API responses for **faster performance**.  
 
 ### Useful resources
