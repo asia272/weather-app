@@ -65,6 +65,9 @@
     align-items: end;
     flex-direction: column-reverse;
   }
+  .dropdown-menu {
+    top: 66%;
+  }
   .search-bar-form button {
     font-size: 1.22rem;
     font-weight: 500;

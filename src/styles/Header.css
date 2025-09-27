@@ -5,6 +5,7 @@
   align-items: center;
   padding: 1.2rem 0;
   z-index: var(--z-base);
+  position: relative;
 }
 .units-dropdown{
   display: flex;

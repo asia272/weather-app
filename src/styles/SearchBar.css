@@ -77,7 +77,6 @@
   border-radius: 12px;
   transition: all 0.5s linear;
   text-transform: capitalize;
-  z-index: 1;
   transition: background 0.2s linear;
   cursor: pointer;
   outline: 2px solid transparent;
