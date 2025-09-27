@@ -57,7 +57,9 @@ Users should be able to:
 
 ---
 ### Screenshot
- 
+
+![App Screenshot](src/assets/images/screenshot.png)
+
 
 ### Links
 - **Live Demo:** (https://weather-app-six-mocha-2yljnsbf39.vercel.app/)  
