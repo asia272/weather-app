@@ -79,7 +79,7 @@ function Header({ units, setUnits, favorites, onFavoriteSelect, onRemoveFavorite
           />
 
         </div>
-
+<div className="tooltip">
 
         <button
           className="units-btn"
@@ -105,7 +105,8 @@ function Header({ units, setUnits, favorites, onFavoriteSelect, onRemoveFavorite
           />
 
         </button>
-
+       {!open && <span className="tooltip-text">Change measurement units</span>}
+</div>
         {open && (
           <ul className="dropdown-menu" role="menu">
             {/* Temperature */}

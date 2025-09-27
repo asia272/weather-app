@@ -27,26 +27,27 @@
   justify-content: space-between;
   z-index: var(--z-base);
 }
-
-.current-weather .favorite-btn {
+.current-weather .favorite-btn{
+  display:block;
+  width: fit-content;
+}
+.current-weather .favorite-btn button {
   background-color: inherit;
-/* 
-  background-color: #6550dd; */
   border: none;
   cursor: pointer;
-  display: block;
-  padding: 0.33rem 0.7rem;
+  padding: 0.33rem;
   margin-top: 0.73rem;
-  color: white;
-  display: flex;
-  align-items: center;
-  border-radius: 6px;
+
 }
 
-.favorite-btn img{
+.favorite-btn img {
   height: 35px !important;
   width: 30px;
 
+}
+
+.favorite-btn img:hover {
+  opacity: 0.6;
 }
 
 .current-weather .current-weather-icon {
