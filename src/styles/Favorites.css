@@ -11,7 +11,7 @@
 
 .favorites-btn {
   background: var(--color-surface);
-
+  position: relative;
   padding: 0.37rem 1rem;
   border-radius: 8px;
   cursor: pointer;
@@ -28,10 +28,12 @@
   background: var(--color-surface-alt);
 
 }
-.remove-btn img{
+
+.remove-btn img {
   height: 20px !important;
   width: 20px;
 }
+
 .favorites-dropdown {
   position: absolute;
   top: 110%;
@@ -83,3 +85,23 @@
   cursor: pointer;
   margin-left: 0.5rem;
 }
+
+.favorites-count {
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  background: var(--color-accent);
+  color: var(--color-surface);
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 50%;
+  padding: 2px 6px;
+  line-height: 1;
+  min-width: 20px;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+

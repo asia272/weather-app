@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../styles/Favorites.css";
-import "../styles/Tooltip.css"; 
+import "../styles/Tooltip.css";
 
 import likeIcon from "../assets/images/all-like-icon.svg";
 import removeIcon from "../assets/images/remove.svg";
@@ -26,7 +26,8 @@ function FavoritesDropdown({ favorites, onFavoriteSelect, onRemoveFavorite }) {
   };
   return (
     <div className="favorites" ref={dropdownRef}>
-    <div className="tooltip">
+      <div className="tooltip">
+
         <button
           className="favorites-btn"
           onClick={() => setOpen(!open)}
@@ -34,10 +35,14 @@ function FavoritesDropdown({ favorites, onFavoriteSelect, onRemoveFavorite }) {
           aria-expanded={open}
         >
           <img src={likeIcon} alt="like icons" />
-           Favorites
+          {/*  Show total count */}
+          {favorites.length > 0 && (
+            <span className="favorites-count">{favorites.length}</span>
+          )}
+          <span> Favorites</span>
         </button>
-   
-       
+
+
         {/* Tooltip text is hidden if dropdown is open */}
         {!open && (
           <span className="tooltip-text">
@@ -61,7 +66,7 @@ function FavoritesDropdown({ favorites, onFavoriteSelect, onRemoveFavorite }) {
                   </button>
                   <button
                     className="remove-btn"
-                  onClick={() => handleRemove(fav.city)}
+                    onClick={() => handleRemove(fav.city)}
                   >
                     <img src={removeIcon} alt="remove-icon" />
                   </button>
