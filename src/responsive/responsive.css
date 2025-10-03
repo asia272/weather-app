@@ -80,9 +80,6 @@
 
 /* For Current Weather  */
 @media (max-width:500px) {
-
-
-
   .current-weather {
     flex-direction: column;
     gap: 1rem;

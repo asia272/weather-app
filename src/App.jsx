@@ -23,6 +23,7 @@ import "aos/dist/aos.css";
 import "./App.css";
 import "./responsive/responsive.css";
 
+
 export default function App() {
   const {
     weather,
